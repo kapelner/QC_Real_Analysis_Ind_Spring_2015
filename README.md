@@ -21,7 +21,7 @@ The syllabus can be found [here](https://raw.githubusercontent.com/kapelner/QC_R
 * Homework 3 can be found with spacing for you to fill in [here](https://github.com/kapelner/QC_Real_Analysis_Ind_Spring_2015/blob/master/homeworks/hw03/hw03.pdf?raw=true).
 * Homework 2 can be found with spacing for you to fill in [here](https://github.com/kapelner/QC_Real_Analysis_Ind_Spring_2015/blob/master/homeworks/hw02/hw02_with_spaces.pdf?raw=true).
 -->
-* Homework 1 can be found [here](https://github.com/kapelner/QC_Real_Analysis_Ind_Spring_2015/master/homeworks/hw01/hw01.pdf?raw=true).
+* Homework 1 can be found [here](https://github.com/kapelner/QC_Real_Analysis_Ind_Spring_2015/blob/master/homeworks/hw01/hw01.pdf?raw=true).
 
 
 ## Exams
