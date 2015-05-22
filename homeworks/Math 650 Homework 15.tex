@@ -1,0 +1,83 @@
+\documentclass[12pt]{article} 
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{color}
+\usepackage{enumerate}
+\usepackage[hyperfootnotes=false]{hyperref}
+\usepackage{graphicx}
+\graphicspath{ {images/} }
+
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{corollary}{Corollary}[theorem]
+\newtheorem{lemma}[theorem]{Lemma}
+\title{Math 650.2  Problem Set 15}
+\author{Elliot Gangaram\\
+\date{}
+\ elliot.gangaram@gmail.com \\}
+\include{preamble}
+
+
+\newtoggle{spacingmode}
+\begin{document}
+\maketitle
+
+
+\problem Let $X$ be a metric space and let $E$ and $Y$ be subsets of $X$ such that $E \subset Y \subset X$. Is it possible for $E$ to be open relative to $Y$ but $E$ is not  open relative to $X$? \\ 
+
+It suffices to show such a case when this is possible. Let $X = \mathbb{R}^{2}$, $Y=\mathbb{R}$,  $E=(a,b)$ where $a$ and $b$ are real numbers and $a \neq b$. So $E$ is open relative to $Y$ since $(a,b)$ is a neighborhood of $\mathbb{R}$ and is therefore open by Theorem 2.19.  \\
+
+However, $E$ is not an open subset of $X$ meaning that the line segment $(a,b)$ is not open relative to $\mathbb{R}^{2}$. Before we prove this, we shall forewarn two abuses of notation. It is clear that in the paragraph above we had $(a,b) \subset \mathbb{R}$. So if $p \in (a,b)$ then $p=$ some real number. Now we are considering $E$ as a subset of the overall metric space $\mathbb{R}^{2}$. So when we say that $p \in (a,b)$ we really mean that $p$ is an \textbf{ordered pair and not a real number}. That is, $p=(c,0)$ for $a <c<b$ since the interval $(a,b)$ lays on the $x-$axis. It follows that our interval $E=(a,b)$ in $\mathbb{R}$ can now be described as $E = \braces{(x,0)~|~a<x<b}$. Having said this we continue the proof. \\
+
+To show that $E$ is not open in $\mathbb{R}^{2}$ we will use contradiction. Namely, assume that $E$ is open relative to $\mathbb{R}^{2}$. Let $p \in E$ so $p=(c,0)$ for $a <c<b$. The definition of open relative, states  $\exists~ r>0$ such that whenever $d(p,q)<r$, and $q \in X$ then $q \in E$. So we must try to contradict the statement that $\exists ~r>0$ such that whenever $d(p,q)<r$, and $q \in \mathbb{R}^{2}$ then $q \in E$. \\ 
+
+Consider the point $q=(c,r-\epsilon)$ where $0<\epsilon<r$. Clearly $q \in \mathbb{R}^{2}$. Is $d(p,q)<r$? Well under the usual  metric $d$ on $\mathbb{R}^{2}$, we have $d(p,q)=d \big((c,0),(c,r- \epsilon)\big) = \sqrt{((r-\epsilon)-0)^{2}+(c-c)^{2}} = \sqrt{(r-\epsilon})^{2}$. Observe that $\sqrt{(r-\epsilon})^{2} < r$ is a true statement since
+\begin{align}
+\sqrt{(r-\epsilon})^{2} < r \\
+(r - \epsilon)^{2} < r^{2}
+\end{align} where the last line is obviously true. Going from Eq. 2 to Eq. 1 is valid and so we see that $d(p,q) <r$. However, $q=(c,r-\epsilon) \notin E$ since the second coordinate is not 0. So what have we shown? \\ 
+
+We have shown that if $p \in E$ then regardless of what we choose $r>0$ to be, there exists a point $q \in \mathbb{R}^{2}$ such that whenever $d(p,q)<r$ then $q \notin E$. Thus $E$ is not open relative to $X$. This problem motivates the idea of \qu{open relative.} In class, when we use to say that \qu{$E$ is open,} we really meant \qu{$E$ is open in $X$.} At that point of the course, we need not specify what $E$ is open in because the only containment we had was $E \subset X$. However, since it is possible for $E$ to be open in a subset of $X$ without being open in $X$, we must develop this notion of \qu{open relative.} \\ \\
+
+\problem Let $X$ be a metric space and let $E \subset X$. Explain the difference of $E$ being open in $X$ verses $E$ being open relative to $X$. \\
+
+By definition, $E$ is open in $X$ if every point of $E$ is an interior point of $E$. This leads us the the following chain of equivalent definitions.
+\begin{align}
+\forall ~p \in E \big( \exists ~ r>0 ~s.t~ N_{r}(p) \subset E \big) \\
+\forall ~p \in E \big( \exists ~ r>0 ~s.t~ \braces{q~|~d(p,q)<r} \subset E \big) \\
+\forall ~p \in E \bigg( \exists ~ r>0 ~s.t~  \forall q \in E \big(d(p,q)<r \Rightarrow q \in E \big) \bigg)
+\end{align}
+
+Compare this with the definition for $E$ is open relative to $X$. By translating Rudin's definition on page 35 we have 
+\begin{align}
+\forall ~p \in E \bigg( \exists ~ r>0 ~s.t~  \forall q \in X \big(d(p,q)<r \Rightarrow q \in E \big) \bigg)
+\end{align}
+but since $q \in E$, and $E \subset X$, then we have 
+\begin{align}
+\forall ~p \in E \bigg( \exists ~ r>0 ~s.t~  \forall q \in E \big(d(p,q)<r \Rightarrow q \in E \big) \bigg)
+\end{align}
+so to say that  $E$ is open in $X$ is the same as saying that $E$ is open relative to $X$. \\
+
+\problem Prove or disprove the following statement: Let $E$ be an open set and $E \subset Y$. Then $E$ is open relative to $Y$. \\ 
+
+Well first of all, there is a problem in the formulation of the statement. By Problem 2, we see that being open in a set and being open relative to a set mean the same thing. Moreover, prior to Rudin introducing the notion of open relative we would would always say \qu{$E$ is open.} However this is implicitly assuming that $E \subset X$ where $X$ is the larger metric space. Now with this notion of open relative, we must specify what $E$ is open relative to. Is $E$ open relative to a subset of $X$ which is $Y$ or is $E$ open relative to $Y$? With this said, the question can have two meanings: 
+\begin{enumerate}
+\item Let $E$ be an open subset relative to $Y$ and $E \subset Y$. Then $E$ is open relative to $Y$.
+\item Let $E$ be an open subset relative to  $X$ and $E \subset Y$. Then $E$ is open relative to $Y$.
+\end{enumerate} 
+
+If the statement means statement $(a)$ then the statement is clearly true as argued by question 2 since $E$ being open in $Y$ has the same meaning as being open relative to $Y$. \\ 
+
+Now if the statement means case $(b)$ then we run into some trouble as again there can be more than one interpretation. We may have $E \subset X \subset Y$ or $E \subset Y \subset X$. In the former statement, where $E \subset X \subset Y$, the statement is false since the counterexample is precisely problem 1. So the only case left to settle is if $E \subset Y \subset X$ and $E$ is an open subset of $X$, then does this implies $E$ is open in $Y$? The answer is yes and here is why: Since $E$ is open in $X$, then to each $p \in E$, there exists an $r>0$ such that $q \in E$ whenever $d(p,q)<r$ and $q \in X$. Since this holds for all $q \in X$ and since $Y \subset X$, then this holds for all $q \in Y$. Thus the statement \qu{to each $p \in E$, there exists an $r>0$ such that $q \in E$ whenever $d(p,q)<r$ and $q \in Y$} is true and so $E$ is open in $Y$. \\
+
+To summarize we have:
+\begin{enumerate}
+\item Let $E$ be an open subset relative to $Y$ and $E \subset Y$. Then $E$ is open relative to $Y$. This statement is true.
+\item Let $E \subset X \subset Y$ and let $E$ be an open subset relative to $X$ and $E \subset Y$. Then $E$ is open relative to $Y$. This statement can be false.
+\item Let $E \subset Y \subset X$ and let $E$ be an open subset relative to $X$ and $E \subset Y$. Then $E$ is open relative to $Y$. This statement is true.
+\end{enumerate}
+
+
+
+\end{document}

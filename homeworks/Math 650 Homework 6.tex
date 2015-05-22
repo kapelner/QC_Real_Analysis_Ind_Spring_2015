@@ -1,0 +1,123 @@
+\documentclass[12pt]{article} 
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{color}
+\usepackage{enumerate}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{corollary}{Corollary}[theorem]
+\newtheorem{lemma}[theorem]{Lemma}
+\title{Math 650.2 Homework 6}
+\author{Elliot Gangaram\\
+\date{}
+\ elliot.gangaram@gmail.com \\}
+\include{preamble}
+
+
+\newtoggle{spacingmode}
+\begin{document}
+\maketitle
+
+\problem
+Let $\alpha$ and $\beta$ be cuts. Prove that for all $\alpha$ and for all $\beta$, either $\alpha < \beta$, or $\beta < \alpha$ or $\alpha = \beta$.  \\ \\
+We are trying to show $\forall \alpha ~ \forall \beta ~ ( \alpha<\beta \lor{} \alpha=\beta \lor{} \beta <\alpha$). Let $P$ denote $\alpha < \beta$, let $Q$ denote  $\alpha = \beta$ and let $R$ denote  $\beta < \alpha$. Then we have the following truth table.
+
+\begin{displaymath}
+\begin{array}{|c|c|c|c}
+   P
+ & Q
+ & R
+ & P\lor{}Q\lor{}R \\
+\hline
+F & F & F & F \\
+F & F & T & T \\
+F & T & F & T \\
+F & T & T & T \\
+T & F & F & T \\
+T & F & T & T \\
+T & T & F & T \\
+T & T & T & T \\
+\hline
+\end{array}
+\end{displaymath}
+Our goal is to prove that one and only one of the statements are true. To do that, we will assume two statements are false and show this must force the third statement to be true. Note that we do not have to consider the case where two statements are true and the other statement is false. This is because if two statements are true, then the conjunction of these statements are \textbf{inconsistent}. That is, it is not logically possible for the conjunction of both statements to be true. For example, suppose we are in the fourth row of the truth table. Then both statements $Q$ and $R$ are true. However, both statements \textsl{cannot}  be true at the same time. To see this, note if $\beta < \alpha$, then there exists an element $s \in \alpha$ such that $s \notin \beta$. This contradicts $\alpha = \beta$. Thus we only need to consider the cases where one and only one statement is true. \\ \\
+\textbf{Case One:} Assume that $\alpha \nless \beta$ and that $\alpha \neq \beta$. By our definition of $<$, this means that $\alpha$ is not a proper subset of $\beta$. So there exists a $p \in \alpha$ such that $p \notin \beta$. Let $q \in \beta.$ Then by our definition of cuts, $q<p$ and so $q \in \alpha$. This shows that $\beta \subset \alpha$ and since $\beta \neq \alpha$, then $\beta < \alpha$.\\ \\
+\textbf{Case Two:} Assume that $\beta \nless \alpha$ and that $\alpha \neq \beta$. By our definition of $<$, this means that $\beta$ is not a proper subset of $\alpha$. So there exists a $p \in \beta$ such that $p \notin \alpha$. Let $q \in \alpha.$ Then by our definition of cuts, $q<p$ and so $q \in \beta$. This shows that $\alpha \subset \beta$ and since $\alpha \neq \beta$, then $\alpha < \beta$.\\ \\
+\textbf{Case Three:} Assume that $\alpha \nless \beta$ and that $\beta \nless \alpha$. \\ \\
+Since $\alpha \nless \beta$ we have two possibilities.
+\begin{enumerate}
+\item $\exists p \in \alpha$ such that $p \notin \beta$ 
+\item $\forall p \in \beta, ~ p \in \alpha$.
+\end{enumerate}
+Since  $\beta \nless \alpha$ we have two possibilities.
+\begin{enumerate}
+\item $\exists q \in \beta$ such that $q \notin \alpha$
+\item $\forall q \in \alpha, ~ q \in \beta$.
+\end{enumerate}
+\textbf{Subcase One:} Assume $\exists p \in \alpha$ such that $p \notin \beta$ and $\exists q \in \beta$ such that $q \notin \alpha$. This tells us that $q \notin \alpha$, $q \in \beta$, $p \notin \beta$, $p \in \alpha$. Recall that $\mathbb{Q}$ is an ordered set so either $p<q$, $p=q$, or $p>q$. If $p<q$, then this implies that $p \in \beta$ which is a contradiction. If $p>q$ then $q \in \alpha$ which is again a contradiction. Now if $p=q$, then since $q \notin \alpha$ and $p \in \alpha$, we have $q=p \in \alpha$ which shows $q \in \alpha$  and $q \notin \alpha$ (by assumption) which is a contradiction. \\ \\ 
+\textbf{Subcase Two:} WLOG, assume that $\forall p \in \beta, p \in \alpha$ and $\exists q \in \beta$ such that $q \notin \alpha$. (Note that this is the same as assuming $\exists p \in \alpha$ such that $p \notin \beta$ and $\forall q \in \alpha, q \in \beta$). Since we are assuming $\exists q \in \beta$ such that $q \notin \alpha$, then this contradicts our other assumption since our other assumption states that all elements of $\beta$ are in $\alpha$. \\ \\ 
+\textbf{Subcase Three:} Assume that $\forall p \in \beta,~ p \in \alpha$, and $\forall q \in \alpha,~ q \in \beta$. Then by Zermelo Fraenkel set theory, $\alpha = \beta$ which is precisely what we wanted to prove. \\ \\ 
+
+
+
+
+\problem 
+Let $A$ be a nonempty subset of $\mathbb{R}$. Show that sup $A = \gamma$ where $\gamma$ is the union of all elements of $A$. \\ \\
+Since $A$ is a nonempty subset of $\mathbb{R}$ what do the elements in $A$ look like? Recall that the member of $\mathbb{R}$ are cuts. (This is defined in step 1. For reference check problem four). Since $\gamma =\cup _{i \in \mathcal{I}}~ \alpha_{i}$, where $\alpha_{i}$ is a cut, then $\alpha_{i} \leq \gamma ~ \forall i$ so $\gamma$ is an upper bound. To see this, note if $\alpha_{i}> \gamma$, then there exists an element in $\alpha_{i}$ that is not in $\gamma$ which violates the definition of $\gamma$.   \\ \\
+We now must show that any element less than $\gamma$ fails to be an upper bound. So assume $\delta < \gamma$. Then by our definition of cuts, $\exists s \in \gamma$ such that $s \notin \delta$. However, since $s \in \gamma$, then this implies that $s \in a_{j}$ for some $a_{j} \in A$. Since $s \in a_{j}$ and $s \notin \delta$, then we have $\delta < a_{j}$ and thus $\delta$ fails to be an upper bound for $A$. This proves that $\gamma =$ sup $A$. \\ \\ 
+
+\problem 
+Let $\gamma$ be defined as in question two. Prove $\gamma \in \mathbb{R}$. (i.e. prove that $\gamma$ is a cut). \\ \\
+Recall the elements of $\mathbb{R}$ are cuts. So to show  $\gamma \in \mathbb{R}$ means we must show that $\gamma$ is a cut. To show $\gamma$ is a cut, we must prove $\gamma$ has the following properties.
+\begin{enumerate}
+\item $\gamma$ is not empty, and $\gamma \neq \mathbb{Q}$
+\item If $p \in \gamma$, $q \in \mathbb{Q}$ and $q<p$, then $q \in \gamma$
+\item If $p \in \gamma$, then $p<r$ for some $r \in \gamma$
+\end{enumerate}
+Recall that $\gamma$ is the union of elements in $A$. However, $A$ is nonempty and so there exists at least one cut, $\alpha \in A$. By definition cuts are nonempty and since $\alpha \subset \gamma$, then $\gamma$ is also nonempty. This proves the first part of $(a)$. \\
+To show $\gamma \neq \mathbb{Q}$, note there exists a $\beta \in \mathbb{R}$ such that $\beta$ is an upper bound of $A$. So $\gamma \subset \beta$ since $\alpha \subset \beta$ for all such $\alpha \in A$. But $\gamma \subset \beta$ shows that $\gamma \neq \mathbb{Q}$. This proves property (a). \\ \\
+To prove property (b) let $p \in \gamma$. Then by the definition of $\gamma$, $p \in \alpha_{j}$ for some $\alpha_{j} \in A$. Now use the assumption that $q<p$. Since $q<p$, then $q \in \alpha_{j}$ and so $q \in \gamma$. \\ \\
+To prove property (c) again let $p \in \gamma$.  Then by the definition of $\gamma$, $p \in \alpha_{j}$ for some $\alpha_{j} \in A$. By definition of cuts, there exists an $r \in \alpha_{j}$ such that $r>p$. Then $r \in \gamma$ as well since $r \in \alpha_{j}$. \\ \\
+
+\problem 
+Explain what each step in Dedekind's construction achieves.
+\begin{enumerate}
+\item Dedekind's construction looks to \qu{construct $\mathbb{R}$ from $\mathbb{Q}$.} However, how can we define $\mathbb{R}$? More precisely, what are the elements of $\mathbb{R}$? Dedekind answers this by stating the elements of $\mathbb{R}$ are \qu{cuts}, which are types of subsets of $\mathbb{Q}$.
+\item In the second step of Dedekind's construction we define an order on $\mathbb{R}$. We then prove that our definition of an order fulfills the required properties. 
+\item In the third step, we show that given any nonempty subset of $\mathbb{R}$, the least upper bound exists. Thus, $\mathbb{R}$ has the LUB property.
+\item We want $\mathbb{R}$ to form a field. So we must show that $\mathbb{R}$ satisfies the list of field axioms. Recall that the field axioms involve two binary operations, addition and multiplication. Since the elements of $\mathbb{R}$ are sets, we must somehow define addition of sets. Here, we show that our definition of addition respects the field axioms under addition.
+\item We still have yet to show that $\mathbb{R}$ forms a field because we only verified the axioms involving addition. In the later steps we will show the other field axioms hold. However, since we are on the topic of addition, we would like to show that $\mathbb{R}$ forms an ordered field. Showing that a field is an ordered field requires us to show two conditions. One condition involves addition and the other condition involves multiplication. Since we have only defined addition, we can only show that this additive property of ordered fields hold. 
+\item Now that we have shown that $\mathbb{R}$ respects the addition axioms and properties for fields and ordered fields, we introduce another binary operation, multiplication, and show that the multiplication of elements in $\mathbb{R}$ satisfies the multiplicative and distributive field axioms. However, to show this directly becomes a bit troublesome so we first restrict ourselves to showing that the multiplicative and distributive field axioms hold for $\mathbb{R^{+}}$.
+\item We now show that the multiplicative and distributive field axioms hold for the entire set $\mathbb{R}$. We also show that the second condition for an ordered field, mentioned in step (e), holds. In doing so, we have shown that $\mathbb{R}$ forms an ordered field with the LUB property.
+\item We now show that there exists an isomorphism between $\mathbb{Q}$ and $\mathbb{Q^{*}}$ where $\mathbb{Q^{*}}$ is the ordered field whose elements are the rational cuts.
+\item The last step is to make a remark on the isomorphism property. That is, we can consider $\mathbb{Q}$ to be a subfield of $\mathbb{R}$ which is stated in Theorem 1.19. 
+\item The last theorem stated by Rudin, which is not proved, tells us that any two ordered fields with the least upper bound property are isomorphic. 
+\end{enumerate} 
+
+\problem 
+Prove that $0^{*}$ is a cut. \\ \\
+Recall how $0^{*}$ is defined. $0^{*}$ refers to the set of all negative rational numbers. To show $0^{*}$ is a cut, we must show $0^{*}$ has the following properties.
+\begin{enumerate}
+\item $0^{*}$ is not empty, and $0^{*} \neq \mathbb{Q}$
+\item If $p \in 0^{*}$, $q \in \mathbb{Q}$ and $q<p$, then $q \in 0^{*}$
+\item If $p \in 0^{*}$, then $p<r$ for some $r \in 0^{*}$
+\end{enumerate}
+It is clear that property $(a)$ is fulfilled. Certainly $-1 \in 0^{*}$ so $0^{*}$ is not empty, and $1 \notin 0^{*}$ since $1$ is positive so $0^{*} \neq \mathbb{Q}$ . (Note we proved that 1 is positive in a previous homework). \\ \\
+
+\noindent To prove property $(b)$ note that we are already given that $q \in \mathbb{Q}$. To show $q \in 0^{*}$, we must only show that $q$ is negative. Since $q<p$, and $p$ is already defined to be negative, then $q$ is also negative and hence $q \in 0^{*}$. \\ \\
+
+\noindent It is also clear that property $(c)$ is true. Suppose that $0^{*}$ has a largest member. Call this member $\lambda$. Then $\dfrac{\lambda}{2}$ belongs to $0^{*}$ since we proved that a negative times a positive is a negative, and we know that $\mathbb{Q}$ is closed. This shows that $\dfrac{\lambda}{2}$ is a larger member of $0^{*}$ than $\lambda$. Since this holds for all such $\lambda$ then it is clear that such an $r$ as described in the property exists. \\ \\
+
+\noindent Hence $0^{*}$ is a cut. \\ \\
+ 
+\problem
+Prove in step 4 of Dedekind's  construction that the axiom $A1$ holds. \\ \\
+Dedekind is saying let $\alpha \in R$ and let $\beta \in R$. We want to verify the first field axiom, namely that the field is closed under the operation of addition. However, recall that $\alpha$ and $\beta$ are sets and so we must define how to add sets. Let $\alpha + \beta$ be the set of all sums $r+s$ where $r \in \alpha$ and $s \in \beta$. Our goal is to show the same thing which we showed for $0^{*}$, namely we want to show that $\alpha + \beta$ is still a cut. We shall proceed in the same manner as before. \\ \\
+Property One: It is clear that $\alpha + \beta$ is not empty. Since $\alpha$ and $\beta$ by assumption are cuts which are defined to be nonempty, there is at least one element in $\alpha$ and at least one element in $\beta$. Let $r \in \alpha$ and $s \in \beta$. Then the element $r+s \in \alpha + \beta$. \\
+Additionally, $\alpha + \beta \neq \mathbb{Q}$. To see this, note by the definition of cut, there exists a rational number $r' \notin \alpha$ and similarly, there exists a rational number $s' \notin \beta$. Then, from our definition of cuts, $r<r'$ and $s<s'$ which shows $r+s<r'+s'$. Thus, $r' +s' \notin \alpha + \beta$ and so $\alpha + \beta \neq \mathbb{Q}$.  \\ \\
+Property Two: We would like to show that if $p \in \alpha + \beta,~q \in \mathbb{Q}$ and $q<p$, then $q \in \alpha + \beta$. By our definition of addition, if $p \in \alpha + \beta$, then $p=r+s$ where $r \in \alpha$ and $s \in \beta$. Since $q<p$ by assumption, we have $q<r+s$ which implies $q-s<r$. Again by our definition of cuts, since $q-s<r$, then $q-s \in \alpha$. But since $q-s \in \alpha$, and $s \in \beta$, then $(q-s)+s \in \alpha + \beta$ which shows that $q \in \alpha + \beta$. \\ \\ 
+Property Three: We must show if $p \in \alpha + \beta$, then $p<z$ for some $z \in \alpha + \beta$. As defined before, let $p \in \alpha + \beta$ such that $p=r+s$ where $r \in \alpha$ and $s \in \beta$. By property three of the cut $\alpha$, we know there exists an element $t \in \alpha$ such that $t>r$. Let $z=t+s$. Then we have $p=r+s < t + s = z$ Note that $z \in \alpha + \beta$ since $t \in \alpha$ and $s \in \beta$ and also $p<z$ so we have proved property three for $\alpha + \beta$. 
+
+
+\end{document}

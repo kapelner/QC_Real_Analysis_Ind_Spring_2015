@@ -1,0 +1,85 @@
+\documentclass[12pt]{article} 
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{color}
+\usepackage{enumerate}
+\usepackage{gensymb}
+\usepackage[hyperfootnotes=false]{hyperref}
+\usepackage{graphicx}
+\graphicspath{ {images/} }
+
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{corollary}{Corollary}[theorem]
+\newtheorem{lemma}[theorem]{Lemma}
+\title{Math 650.2  Problem Set 14}
+\author{Elliot Gangaram\\
+\date{}
+\ elliot.gangaram@gmail.com \\}
+\include{preamble}
+
+
+\newtoggle{spacingmode}
+\begin{document}
+\maketitle
+
+\problem Let $E$ be a nonempty set of real numbers which is bounded above. Let $y =$ sup $E$. Prove that $y \in \bar{E}$. \\ 
+
+Proof: Let us condition on $y$. Then we have two cases: either $y \in E$, or $y \notin E$. \\ 
+
+Case One: If $y \in E$, then $y \in E \cup E'$ and so $y \in \bar{E}$. \\
+
+Case Two: If $y \notin E$, and we want to show that $y \in \bar{E}$, then we better prove that $y \in E'$. That is, $y$ is a limit point of $E$. Let us see if this is true. Since $y=$  sup $E$, then for every $r>0$, there exists some point $x \in E$ such that $y-r<x<y$. This must be the case because if there is no point $x$ such that $x$ is between $y-r$ and $y$, then this implies that $x$ is an upper bound of $E$ but this would contradict the fact that $y$ is the least upper bound of $E$. Thus the inequality $y-r<x<y$ shows that every neighborhood of $y$ contains some point $x \neq y$ where $x \in E$. However, this is precisely the definition of a limit point and thus $y \in E'$ which implies that $y \in \bar{E}$. \\ 
+
+It should be noted that we can make a stronger statement in the case where $E$ is closed. This is because if $E$ is closed, then every limit point of $E$ is a point of $E$ and thus $y \in E$ so it is trivial that $y \in \bar{E}$. \\
+
+\problem Suppose $Y \subset X$. Prove  a subset $E$ of $Y$ is open relative to $Y$ if and only if $E = Y \cap G$ for some open subset $G$ of $X$. \\
+
+Proof: \\
+
+$\Rightarrow$ Let us assume that a subset $E$ of $Y$ is open relative to $Y$. Then by the definition of open relative, to each $p \in E$, there is an $r_{p}>0$ such that $q \in E$ whenever $d(p,q)<r_{p}$ and $q \in Y$. Let us now construct the set $V_{p} = \braces{q \in X~|~ d(p,q)<r_{p}}$ for each $p \in E$. Observe that $V_{p}$ represents a neighborhood of $p$ and by Theorem 2.19, we know that $V_{p}$ is an open set since every neighborhood is an open set. Now let $\braces{V_{p}}$ be a collection of sets. Since each such $V_{p}$ is open, it follows that $\cup_{p \in E} V_{p}$ is an open set by Theorem 2.24$(a)$. For simplicity in notation, let us call $\cup_{p \in E} V_{p}=G$. \\ 
+
+Now let us recall what we are trying to prove. We want to show that $E = Y \cap G$ where $G$ is an open subset of $X$. To do so, we will show set equality. We first show that  $E \subseteq G \cap Y$. Observe that for all $p \in E$, we have $p \in V_{p}$ because $d(p,p) < r_{p}$. Thus $p \in G$ since $G$ is the union of all $V_{p}$'s. Additionally, since $p \in E$ and $E \subseteq Y$ by assumption, then $p \in Y$. So we have shown that for every $p \in E$, $p \in G$ and $p \in Y$ and thus $E \subseteq G \cap Y$. \\ 
+
+We now show that $G \cap Y \subseteq E$. Let $p \in G$ and let $p \in Y$. Well since $p \in G$, then $p \in V_{p}$ but this implies that $p \in E$ since $E$ is open relative to $Y$. So for each $p \in G \cap Y$, we have shown that $p \in E$, and so $G \cap Y \subseteq E$. Thus $G \cap Y = E$. \\
+
+$\Leftarrow$ We now assume that $E = Y \cap G$ for some open subset $G$ of $X$. Since $G$ is open in $X$, then to each point $p \in G$, there is a positive real number $r_{p}$ such that the conditions $d(p,q)<r_{p}$ imply that $q \in G$. Simply put, for every $p \in G$, there is some neighborhood $N_{r_{p}}(p)$ such that $N_{r_{p}} \subset G$. Note that the neighborhood $N_{r_{p}}(p)$ contains all points $q \in X$ such that $d(p,q)<r_{p}$ but this is precisely the definition of $V_{p}$ and so we have $N_{r_{p}}(p) = V_{p} \subset G$. Observe that $V_{p} \cap Y \subset E$ since $G \cap Y = E$ by assumption. However, $V_{p} \cap Y \subset E$ tells us to each $p \in E$, there is some $r>0$ such that $q \in E$ whenever $d(p,q)<r$ and $q\in Y$ which is precisely what is meant when we say that $E$ is open relative to $Y$. \\ 
+
+\problem Suppose $K \subset Y \subset X$. Then $K$ is compact relative to $X$ if and only if $K$ is compact to relative to $Y$. \\ 
+
+Proof: \\
+
+$\Rightarrow$ Suppose that $K$ is compact relative to $X$ and $\braces{V_{\alpha}}$ is a family of sets such that for each $\alpha$, $V_{\alpha}$ is open relative to $Y$ such that 
+\begin{align*}
+K \subset \cup_{\alpha} V_{\alpha}
+\end{align*}
+
+By Theorem 2.30, for each $\alpha$, there exists a set $G_{\alpha}$ such that $G_{\alpha}$ is open relative to $X$ and $V_{\alpha}=Y \cap G_{\alpha}$. Since $K \subset Y$ and 
+\begin{align*}
+K \subset \cup_{\alpha} V_{\alpha} = \cup_{\alpha} (Y \cap G_{\alpha}) = Y \cap (\cup_{\alpha} G_{\alpha})
+\end{align*}
+we see that $K \subset  Y \cap (\cup_{\alpha} G_{\alpha})$ and therefore $K \subset \cup_{\alpha} G_{\alpha}$. Since $K$ is compact relative to $X$, there exists a finite number of elements, $\alpha_{1}, \ldots \alpha_{n}$ such that 
+\begin{align*}
+K \subset G_{\alpha_{1}} \cup \ldots \cup G_{\alpha_{n}}
+\end{align*}
+Using the assumption that $K \subset Y$ and $K \subset \cup_{j=1}^{n} G_{a_{j}}$ yields that 
+\begin{align*}
+K \subset Y \cap (\cup_{j=1}^{n} G_{a_{j}}) = (Y \cap G_{\alpha_{1}}) \cup \ldots \cup (Y \cap G_{\alpha_{n}}) = V_{\alpha_{1}} \cup \ldots \cup V_{\alpha_{n}}
+\end{align*}
+Since $V_{\alpha}$ was arbitrary, we have shown that every open cover of $K$ has a finite subcover. Therefore, $K$ is compact relative to $Y$.  \\
+
+$\Leftarrow$ Now suppose that  $K \subset Y \subset X$ and $K$ is compact to relative to $Y$. Let $\braces{G_{\alpha}}$ be a collection of sets such that for each $\alpha$, $G_{\alpha}$ is open relative to $X$ and 
+\begin{align*}
+K \subset \cup_{\alpha} G_{\alpha}
+\end{align*}
+For each $\alpha$, let $V_{\alpha} = Y \cap G_{\alpha}$. Now since $K \subset Y$, and $K \subset \cup_{\alpha} G_{\alpha}$, this implies that 
+\begin{align*}
+K \subset Y \cap (\cup_{\alpha} G_{\alpha}) 
+\end{align*}
+Observe that $V_{\alpha}$ is an open cover for $K$. Since $K$ is compact in $Y$, then we know there exists a finite number of elements in $\alpha$, say $\alpha_{1}, \alpha_{2}, \ldots, \alpha_{n}$ such that $K \subset V_{\alpha_{1}} \cup \ldots \cup V_{\alpha_{n}}$. Since 
+\begin{align*}
+\cup_{j=1}^{n} V_{a_{j}} = \cup_{j=1}^{n} (Y \cap G_{a_{j}}) = Y \cap (\cup_{j=1}^{n} G_{\alpha_{j}})
+\end{align*}
+and $K \subset Y$, it follows that $K \subset G_{\alpha_{1}} \cup \ldots \cup G_{\alpha_{n}}$. Since $\braces{V_{\alpha}}$ was arbitrary, we conclude that every collection of sets that form an open cover of $K$ has a finite subcover. Therefore, $K$ is compact relative to $X$. 
+\end{document}

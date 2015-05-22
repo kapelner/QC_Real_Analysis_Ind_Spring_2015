@@ -1,0 +1,161 @@
+\documentclass[12pt]{article} 
+
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{color}
+\usepackage{enumerate}
+\usepackage{graphicx}
+\graphicspath{ {images/} }
+\usepackage[hidelinks]{hyperref}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{corollary}{Corollary}[theorem]
+\newtheorem{lemma}[theorem]{Lemma}
+\title{Math 650.2 Homework 9}
+\author{Elliot Gangaram\\
+\date{}
+\ elliot.gangaram@gmail.com \\}
+\include{preamble}
+
+
+\newtoggle{spacingmode}
+\begin{document}
+\maketitle
+
+\problem  Explain step 8 in Dedekind's construction. \\ \\
+
+In this step, we will show that we can replace the elements of the rational numbers by the so-called rational cuts. In doing so, we shall show that this replacement preserves sums, products, and order. First, let us define what we mean by a rational cut. For each $r \in \mathbb{Q}$, we associate $r$ with $r^{*} \in \mathbb{R}$ defined as follows: $r^{*} = \braces{q \in \mathbb{Q} ~|~q<r}$. However, how do we know that $r^{*} \in \mathbb{R}$? That is, how do we know that $r^{*}$ is a cut? Clearly $r^{*}$ is nonempty since $r^{*}$ contains rationals less than $r$. We also know that $r^{*} \neq \mathbb{Q}$ since $r^{*}$ does not contain $r+1$. Moreover, it is clear that if an element belongs to $r^{*}$, call it $r$, and $q \in \mathbb{Q}$ is such that $q<r$, then $q$ also belongs to $r^{*}$ by definition of $r^{*}$. Lastly, we see that there is no maximal element in $r^{*}$ since the rationals are dense in the rationals. Thus, $r^{*}$ is a cut. \\ \\
+
+We now prove three statements which shows that the sums, products, and order is preserved when transitioning from the rational numbers to the rational cuts. 
+
+\begin{enumerate}
+\item $r^{*} + s^{*} = (r+s)^{*}$ \\ \\
+To prove this, we will show that each set is a subset of the other set. We will first show that $r^{*} + s^{*} \subseteq (r+s)^{*}$. There is an element $p \in r^{*} + s^{*}.$ Then $p=u+v$ for some $u \in r^{*}$ and for some $v \in s^{*}$. By definition of  cuts, this tells us that $u<r$ and $v<s$. So $u+v<r+s$ which implies that $p<r+s$ and thus $r^{*} + s^{*} \subseteq (r+s)^{*}$. \\ \\
+
+We now show that $(r+s)^{*} \subseteq r^{*} + s^{*}$. Suppose $p \in (r+s)^{*}$. Then $p<r+s$. By the closure of the rational numbers, there exists a rational number $t$ such that $2t=r+s-p$. Note that since $p<r+s$, then $r+s-p$ is a positive rational number. Thus $2t$ is positive as well which implies that $t$ itself is positive. Set $r' = r-t$ and set $s'=s-t$. Since $t$ is positive, then it is clear that $r' \in r^{*}$ and $s' \in s^{*}$. Also note that we have the following: 
+
+\begin{align*}
+p=r+s-2t=r+s-t-t=r-t+s-t=(r-t)+(s-t)=r'+s'
+\end{align*}  
+
+which shows that $p \in r^{*} + s^{*}$. Thus $(r+s)^{*} \subseteq r^{*} + s^{*}$ and so we may conclude that $r^{*} + s^{*} = (r+s)^{*}$. \\
+
+\item $r^{*}s^{*}= (rs)^{*}$ \\ \\
+
+As done in part (a) we will establish set equality to prove these two statements. We will first show that $r^{*}s^{*} \subseteq (rs)^{*}$. There is an element $p \in r^{*}s^{*}$. Then $p=uv$ for some $u \in r^{*}$ and for some $v \in s^{*}$. By definition of how we defined our cuts, this tells us that $u<r$ and $v<s$. So $uv<rs$ which implies that $p<rs$ and thus $r^{*}s^{*} \subseteq (rs)^{*}$. \\ \\
+
+We now show that $(rs)^{*} \subseteq r^{*}s^{*}$. Suppose $p \in (rs)^{*}$ and choose $p$ such that $p \neq 0$. Then $p<rs$. By the closure of the rational numbers, there exists a rational number $t$ such that $t^{2}=(rs)/p$. Since $p<rs$, then $(rs)/p$ is greater than 1. So $t$ is greater than 1 and thus $t^{2}$ is greater than 1. Set $r' = r/t$ and set $s'=s/t$. Since $t$ is greater than 1, it is clear that $r' \in r^{*}$ and $s' \in s^{*}$. Also note that we have the following: 
+
+\begin{align*}
+p=(rs)/t^{2}=(r/t)(s/t)=r's'
+\end{align*}  
+
+which shows that $p \in r^{*}s^{*}$. Thus $(rs)^{*} \subseteq r^{*}s^{*}$ and so we may conclude that $r^{*}s^{*} = (rs)^{*}$. \\ \\  
+
+\item $r^{*}<s^{*}$ if and only if $r<s$. \\ \\
+
+We first show if $r<s$ then $r^{*}<s^{*}$. Since $r<s$, then $r \in s^{*}$ but $r \notin r^{*}$ because $r^{*}$ contains all the rationals \textsl{strictly less} than $r$. Since $r \notin r^{*}$, then $r^{*}<s^{*}$. \\ \\
+
+We now show if $r^{*}<s^{*}$ then $r<s$. Since $r^{*}<s^{*}$, then there is a $p \in s^{*}$ such that $p \notin r^{*}$. So we have $r \leq p < s$ which implies $r<s$ and thus we have $r^{*}<s^{*}$. \\ \\
+\end{enumerate}
+
+
+
+\problem Explain step 9 in Dedekind's construction. \\ \\
+
+In the previous steps, we have defined the set $\mathbb{R}$ to be the set of all cuts. We shall now denote this set as $\mathbb{R}^{*}$ and denote the set of real numbers by $\mathbb{R}$. Using the elements of $\mathbb{R}^{*}$, which are Dedekind cuts, we have shown that $\mathbb{R}^{*}$ is an ordered field with the least upper bound property. Moreover, in the last step, we have shown that if we associate a particular type of cut, which we called a rational cut, to every rational number, then the rational cuts preserves the structure of the rationals. That is, the sum, products and order is preserved. We shall denote this set of rational cuts by $\mathbb{Q}^{*}$. Another way to capture this preservation of addition and multiplication it to say that the function is operation preserving. Intuitively, we mean the following: there exists a bijection from $\mathbb{Q}$ to $\mathbb{Q}^{*}$. Moreover, this bijection, call it $f$, has the following property: Suppose we add two elements in $\mathbb{Q}$ and then map this element under $f$ to $\mathbb{Q}^{*}$. We would get the same result if we first mapped each individual element to $\mathbb{Q}^{*}$ and then added the resulting elements in the set $\mathbb{Q}^{*}$. The same holds for multiplication. Thus, these fields, $\mathbb{Q}$ and $\mathbb{Q}^{*}$ are isomorphic to each other. \\ \\
+
+In this final step, Rudin notes that any two ordered fields with the least upper bound property are isomorphic for which the proof is omitted. Since $\mathbb{R}$ and $\mathbb{R}^{*}$ have these properties, then $\mathbb{R} \cong \mathbb{R}^{*}$. So when we were dealing with elements in $\mathbb{R}^{*}$ we are really dealing with elements in $\mathbb{R}$ since the elements of $\mathbb{R}^{*}$ are  the elements of $\mathbb{R}$ under an isomorphism. Moreover, in the last step we constructed a certain type of field which we called $\mathbb{Q}^{*}$. The relationships between all fields presented is as follows: $\mathbb{Q} \cong \mathbb{Q}^{*} \subset \mathbb{R} \cong \mathbb{R}^{*}$. To sum up, we started off with the set of rational numbers, $\mathbb{Q}$ and from there we constructed $\mathbb{R}^{*}$. Although we never explicitly worked with elements in $\mathbb{R}$ we know that the elements of $\mathbb{R}$ are intimately related with the elements of $\mathbb{R}^{*}.$ Lastly, we then considered a certain type of cut which led us to build the field $\mathbb{Q}^{*}$. \\ \\
+
+\problem 
+
+\noindent The Calkin-Wilf tree demonstrates the countability of $\mathbb{Q}^{+}$. To construct the Calkin-Wilf tree we proceed as follows. First start off with the fraction $1/1$. Then we create another two numbers from $1/1$, namely $1/2$ and $2/1$. Then from each of these rationals, we can construct two more numbers. From $1/2$ we obtain $1/3$ and $3/2$. From $2/1$ we obtain $2/3$ and $3/1$. Then we continue this construction for every resulting number. But how exactly are we creating these numbers? Given an arbitrary fraction, $m/n$ we construct $m/(n+1)$ and $(m+n)/n$. For example, from $1/2$ we constructed $1/(2+1)$ which is $1/3$ and also constructed $(1+2)/2$ which is $3/2$. \\ \\ 
+
+\noindent Let us look at the following diagram of the Calkin-Wilf tree.  \\ 
+
+\centerline{\includegraphics[scale=0.16]{tree2}} 
+
+\noindent To formalize this construction, let us first define Stern's diatomic series. \\ \\
+$a_{1}=1 \\ 
+a_{2k}=a_{k} \\ 
+a_{2k+1}=a_{k}+a_{k+1}$ \\
+
+\noindent To get a feel for this series, let us list out the first few terms. \\ 
+
+\noindent $a_{1}=1 \\ 
+a_{2}=a_{1}=1 \\
+a_{3}=a_{1}+a_{2}=1+1=2 \\
+a_{4}=a_{2}=1 \\
+a_{5}=a_{2}+a_{3}=1+2=3 \\
+a_{6}=a_{3}=2 \\
+a_{7}=a_{3}+a_{4}=2+1=3 \\
+a_{8}=a_{4}=1$ \\ \\
+
+\noindent Now to obtain the $n^{th}$ rational number, we define $f: \mathbb{N} \rightarrow \mathbb{Q}^{+}$, by $f(n)= \dfrac{a_{n}}{a_{n+1}}$. \\ \\
+
+Let us list out the first few terms. \\ 
+
+\noindent $f(1)= a_{1}/a_{1+1} = 1/1 \\
+f(2)= a_{2}/a_{2+1} = 1/2 \\
+f(3)= a_{3}/a_{3+1} = 2/1 \\
+f(4)= a_{4}/a_{4+1} = 1/3 \\
+f(5)= a_{5}/a_{5+1} = 3/2 \\ 
+f(6)= a_{6}/a_{6+1} = 2/3 \\
+f(7)= a_{7}/a_{7+1} = 3/1 $ \\ \\
+
+This function enables us to say that the $6^{th}$ rational number is $2/3$. Moreover, this function is a bijection. For proof of this, see Theorem 5.1 \href{http://faculty.plattsburgh.edu/sam.northshield/08-0412.pdf}{here}. \footnote{Sam Northshield, Stern's diatomic sequence 0,1,1,2,1,3,2,3,1,4, \ldots , Amer. Math. Monthly, 117, August-September 2010 , 581-598} \\ \\
+
+Since $f$ is a bijection this implies that $f^{-1}$ exists. That means given a rational number we can find the corresponding natural number. For example suppose you have a fraction, say it is $1/4$. Can we determine the $n$ such that $f(n)=1/4$? The answer is a resounding yes. Given a positive rational number, $q \in \mathbb{Q}$, the $n$ such that $f(n)=q$ is found by $n=f^{-1}(q)$. This function, $f^{-1}$, is given as follows: \\ \\
+$f^{-1}(1)=1 \\
+f^{-1}(q)= 2f^{-1} \bigg(\dfrac{q}{1-q} \bigg) ~ \text{if} ~ q<1 \\
+f^{-1}(q) = 2f^{-1}(q-1)+1 ~\text{if}~ q>1$ \\ \\
+
+\noindent As an example, we see from above that $f(5)={3/2}$. Let us plug $(3/2)$ into $f^{-1}$ and see if we get 5. \\ \\
+$f^{-1}(3/2)=2f^{-1} \bigg(\dfrac{3/2}{1-(3/2)} \bigg)+1=2f^{-1} \bigg(\dfrac{1}{2} \bigg)+1.$ A quick calculation yields that $f^{-1} \bigg(\dfrac{1}{2} \bigg)=2$ and so we get $f^{-1}(3/2)=2f^{-1} \bigg(\dfrac{1}{2} \bigg)+1=2(2)+1=5$. \\ \\
+
+So we have described a function $f$ which allows us to tell what the $n^{th}$ rational number is and we have also described a function $f^{-1}$ which tells us where an arbitrary rational, $q$, maps onto the set of natural numbers. \\ \\
+
+
+\problem Describe the Stern-Brocot tree and come up with a bijective function from $\mathbb{N}$ to $\mathbb{Q}^{+}$. \\ \\
+
+The Stern-Brocot tree is a diagram which shows there exists a bijection between the set of natural numbers and the set of positive rationals. This tree is constructed from an algorithm. We shall first present the first few iterations of the tree and then explain how to construct this tree through the algorithm.  \\
+
+\includegraphics[scale=0.16]{tree} \\
+
+Here is the recipe for constructing the tree. We first define the \textbf{mediant} of two fractions as follows: given the fractions $a/b$ and $c/d$ we define the mediant to be the fraction $(a+c)/(b+d)$. We first begin with the fractions $0/1$ and $1/0$. Note that these fractions are just objects. That is, they are not meant to represent any rational number. So how do we construct the set of positive rationals number? The answer is that using these first two fractions, we find the mediant. The mediant is $1/1$. So originally we started with the sequence $\dfrac{0}{1}, \dfrac{1}{0}$.  We then took the mediant and ended up with another sequence $\dfrac{0}{1}, \dfrac{1}{1}, \dfrac{1}{0}$. We shall call the sequence of numbers excluding $\dfrac{0}{1}, \dfrac{1}{0}$ an iteration. So the first iteration simply yields just $\dfrac{1}{1}$. Now let us take the mediant between any two consecutive fractions in the first iteration. In doing so, we end up with the following sequence:  $\dfrac{0}{1}, \dfrac{1}{2}, \dfrac{1}{1}, \dfrac{2}{1}, \dfrac{1}{0}$.  We then iterate this procedure infinitely many times to generate the Stern-Brocot tree. \\ \\
+
+Notice that the Stern-Brocot tree closely resembles the Calkin Wilf tree. As an example we will compare in each construction what rational numbers are constructed in each iteration of the algorithm.
+
+\begin{table}[h]
+\centering \begin{tabular}{|c|c|c|ll}
+\cline{1-3}
+\textbf{Iteration} & \textbf{Calkin Wilf Tree} & \textbf{Stern-Brocot Tree} &  &  \\ \cline{1-3}
+1                  & 1/1                                                     & 1/1                                                      &  &  \\ \cline{1-3}
+2                  & 1/2 and 2/1                                             & 1/2 and 2/1                                              &  &  \\ \cline{1-3}
+3                  & 1/3, 3/2, 2/3 and 3/1                                   & 1/3, 2/3, 3/2, and 3/1                                   &  &  \\ \cline{1-3}
+\end{tabular}
+\end{table}
+
+In fact, for each iteration, we obtain the exact same set of fractions. Thus we can use the functions described in the Calkin Wilf tree to describe the Stern-Brocot. Therefore, this construction is also characterized by $f(n)= \dfrac{a_{i}}{a_{i+1}}$ and $n=f^{-1}(q)$. 
+
+
+%How shall we given a bijection, $f: \mathbb{N} \rightarrow \mathbb{Q}^{+}$? Let us define $f$ as follows: $f(1) = 1$, $f(2n)=f(n)+1$, and $f(2n+1)=\dfrac{1}{f(n)+1}$. To get a feel for this, let us list our a few terms. 
+%\begin{flushleft}
+%$f(1)=1$  \\
+%$f(2)=f(2 \times 1)=f(1)+1=1+1=2$ \\ 
+%$f(3)=f \big( (2 \times 1)+1 \big)= \dfrac{1}{f(1)+1} =\dfrac{1}{1+1}= \dfrac{1}{2}$ \\
+%$f(4)=f(2 \times 2)=f(2)+1=2+1=3$ \\ 
+%$f(5)=f \big( (2 \times 2)+1 \big)= \dfrac{1}{f(2)+1} = \dfrac{1}{2+1}=  \dfrac{1}{3}$ \\
+%$f(6)=f(2 \times 3)=f(3)+1= \dfrac{1}{2} +1= \dfrac{3}{2}$ \\ 
+%$f(7)=f \big(  (2 \times 3)+1 \big)= \dfrac{1}{f(3)+1} = \dfrac{1}{\dfrac{1}{2}+1}= \dfrac{2}{3}$%
+%\end{flushleft}%
+
+
+%To show that $f$ is the bijection, we shall show that $f^{-1}$ exists. \\ \\%
+
+
+
+
+
+\end{document}

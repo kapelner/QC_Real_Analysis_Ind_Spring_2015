@@ -1,0 +1,165 @@
+\documentclass[12pt]{article} 
+
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{color}
+\usepackage{enumerate}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{corollary}{Corollary}[theorem]
+\newtheorem{lemma}[theorem]{Lemma}
+\title{Math 650.2 Homework 12}
+\author{Elliot Gangaram\\
+\date{}
+\ elliot.gangaram@gmail.com \\}
+\include{preamble}
+
+
+\newtoggle{spacingmode}
+\begin{document}
+\maketitle
+
+\problem Let $A \subseteq \mathbb{R}^{+}$. Prove that there does not exist an uncountable set $A$ such that $\sum_{a \in A} a < \infty $. \\ \\
+Let us write $A$ as $A= \cup_{n=1}^{\infty} A_{n}$, where 
+\begin{align*}
+& A_{1}= A \cap (1, \infty) \\
+& A_{2}= A \cap \big( (1/2),1 \big] \\
+& A_{3}= A \cap \big( (1/3), (1/2) \big] \\
+& \ldots \ldots \ldots \ldots \ldots \ldots \ldots  \ldots \ldots \ldots \\
+& \ldots \ldots \ldots \ldots \ldots \ldots \ldots  \ldots \ldots \ldots \\
+\end{align*}
+and for $n \neq 1$, we have $A_{n}= A \cap \big( (1/n), (1/n-1) \big]$. Note that it is impossible for every $A_{n}$ to be countable. This is because in Theorem 2.12 we proved that if $S$ is the union of a countable number of countable sets, then $S$ is countable. Taking the contrapositive, we see that if $S$ is not countable, then $S$ is not the union of a countable number of countable sets. Since $A$ is assumed to not be countable, it follows that there exists some $A_{n}$ which is not countable. Call this set $A_{m}$. Since the sum of the terms in $A_{m}$ is included in $A$, we have 
+\begin{equation}
+\sum_{a \in A} a \geq \sum_{b \in A_m} b
+\end{equation}
+However, the sum on the right hand side diverges. To see this, note that the elements in $A_{m}$ is at least as big as $1/m$ by construction of $A_{m}$. Since $A_{m}$ is uncountable, there are uncountably many real numbers greater than or equal to $1/m$. So we have the following chain of inequalities:
+\begin{equation}
+\sum_{b \in A_m} b \geq \sum_{b \in A_m} 1/m \geq \sum_{b \in A_m'} 1/m = (1/m) \sum_{i=1}^{\infty} 1 = \infty
+\end{equation}
+where $ A_m' \subset A_m$ such that $| A_m' | = |\mathbb{N}|$. Since the right hand side diverges, surely the left hand side diverges as well which completes the proof.  \\ 
+
+\problem \indent  Prove Theorem 2.22: Let $\braces{E_{\alpha}}$ be a (finite or infinite) collection of sets $E_{\alpha}$. Then $\left( \cup_{\alpha}E_{\alpha} \right)^{c} = \cap_{\alpha}\left(E^{c}_{\alpha} \right)$. \\ 
+
+We will first show that $\left( \cup_{\alpha}E_{\alpha} \right)^{c} \subseteq \cap_{\alpha}\left(E^{c}_{\alpha} \right)$. Let $x \in \left( \cup_{\alpha}E_{\alpha} \right)^{c}$. This tells us that $x \notin \cup_{\alpha}E_{\alpha}$. If $x \notin \cup_{\alpha}E_{\alpha}$ then $x \notin E_{\alpha}$ for any such $\alpha$. This implies that $x \in E_{\alpha}^{c}$ for all $\alpha$ and thus $x \in \cap_{\alpha}\left(E^{c}_{\alpha} \right)$. \\
+
+We will now show that $\cap_{\alpha}\left(E^{c}_{\alpha} \right) \subseteq \left( \cup_{\alpha}E_{\alpha} \right)^{c}$. Let $x \in \cap_{\alpha}\left(E^{c}_{\alpha} \right)$. Then this means that $x \in E^{c}_{\alpha}$ for all $\alpha$. This implies that $x \notin E_{\alpha}$ for all $\alpha$. So, $x \notin \left( \cup_{\alpha}E_{\alpha} \right)$ and therefore $x \in \left( \cup_{\alpha}E_{\alpha} \right)^{c}$. \\ \\
+
+Since we showed that both sets are subsets of each other, it follows that \begin{equation}
+\left( \bigcup_{\alpha}E_{\alpha} \right)^{c} = \bigcap_{\alpha}\left(E^{c}_{\alpha} \right)
+\end{equation} \\ \\
+
+
+\problem  Prove Theorem 2.23: A set $E$ is open if and only if its complement is closed.  \\ 
+
+Let us first assume that $E$ is open. That is, every point of $E$ is an interior point of $E$, which means that for all points $p \in E$, there is a neighborhood $N$ of $p$ such that $N \subset E$. We would like to show the complement, $E^{c}$ is closed meaning we need to show that every limit point of $E^{c}$ is a point of $E^{c}$. Recall that a limit point of a set is a point such that every neighborhood of that point contains a different point in that same set. To prove this statement, let $y$ be a limit point of $E^{c}$. Is this $y$ in $E^{c}$? Well,  every neighborhood of $y$ contains a point not equal to $y$ in $E^{c}$ by definition of a limit point. This implies that $y$ is not an interior point of $E$ since for all neighborhoods of $y$, we can find a point not equal to $y$ which is outside of $E$ and therefore all neighborhoods of $y$ cannot be wholly contained in $E$. But if $y$ is not an interior point of $E$ and $E$ only contains interior points, then it must be the case that $y \in E^{c}$. Thus, all limit points of $E^{c}$ is a point in $E^{c}$ which fulfills the definition of closed. \\ \\
+
+We now assume that the complement, $E^{c}$  is closed and would like to show that $E$ is open. Let $x \in E$. Then $x \notin E^{c}$ and so $x$ cannot be a limit point of $E^{c}$ since $E^{c}$ is assumed to contain all limit points by definition of closed. Now since $x \notin E^{c}$ then there exists some neighborhood, $N_{r}(x)$ where all points, $q$ are such that $q \notin E^{c}$. This tells us that $N_{r}(x) \cap E^{c}$ is empty. But this means that $N_{r}(x)$ is wholly contained in $E$ because there are no points of this neighborhood that are in $E^{c}$. So $x \in E$ and thus $x$ is an interior point because we found a neighborhood wholly contained in $E$. Therefore, every $x \in E$ is an interior point of $E$ and so $E$ is open.\\ \\
+
+
+\problem  Prove Theorem $2.24(a) - 2.24(d)$: 
+\begin{enumerate}
+\item For any collection $\braces{G_{\alpha}}$ of open sets, $\cup_{\alpha} G_{\alpha}$ is open. \\ 
+
+We are given that $\braces{G_{\alpha}}$  is a collection of open sets. We would like to prove that $\cup_{\alpha} G_{\alpha}$ is open.  To do so, we must exhibit that each point, $x \in \cup_{\alpha} G_{\alpha}$, is an interior point of $\cup_{\alpha} G_{\alpha}$. That is, there exists some neighborhood $N$ of $x$ such that $N_{r}(x) \subset \cup_{\alpha} G_{\alpha}$. Since  $x \in \cup_{\alpha} G_{\alpha}$,  then $x \in G_{b}$ where $b \in \alpha$. By assumption, we know that $\braces{G_{\alpha}}$ is a collection of open sets, so it follows that $G_{b}$ is an open set. Thus, $x \in G_{b}$ is an interior point by definition of open. Since $x$ and $b$ was chosen arbitrarily, this holds for all points in $\cup_{\alpha} G_{\alpha}$ and thus $\cup_{\alpha} G_{\alpha}$ is open. \\
+
+\item For any collection $\braces{F_{\alpha}}$ of closed sets, $\cap_{\alpha} F_{\alpha}$ is closed. \\ 
+
+We will first prove a lemma. \\ 
+
+Lemma: $\cup_{\alpha} F_{\alpha}^{c} = (\cap_{\alpha} F_{\alpha})^{c}$. \\ 
+
+Proof: By Problem 2, we know that 
+\begin{equation}
+\left( \bigcup_{\alpha}E_{\alpha} \right)^{c} = \bigcap_{\alpha}\left(E^{c}_{\alpha} \right)
+\end{equation}
+Since $\braces{E_{\alpha}}$ can be any collection of sets within the metric space, take $\braces{E_{\alpha}}$ to be $\braces{F^{c}_{\alpha}}$. Then we have 
+\begin{align}
+& \left( \bigcup_{\alpha}F^{c}_{\alpha} \right)^{c} = \left( \bigcap_{\alpha}\left(F^{c}_{\alpha} \right)^{c} \right) \\ 
+& \left( \bigcup_{\alpha}F^{c}_{\alpha} \right)^{c} = \left( \bigcap_{\alpha}\left(F_{\alpha} \right) \right) \\ 
+& \left(  \left( \bigcup_{\alpha}F^{c}_{\alpha} \right)^{c} \right)^{c} = \left( \bigcap_{\alpha}\left(F_{\alpha} \right) \right)^{c} \\  
+& \bigcup_{\alpha} F_{\alpha}^{c} = \left( \bigcap_{\alpha}\left(F_{\alpha} \right) \right)^{c}
+\end{align} 
+which completes the proof of our lemma. We now return to the proof of our theorem. \\ 
+
+We are given that $\braces{F_{\alpha}}$ is a collection of closed sets. So for any $b \in \alpha$, $F_{b}$ is closed. By the corollary to Theorem 2.23, we know that this implies the complement, $F_{b}^{c}$, is open. Since this holds for all $b \in \alpha$, it follows that $\braces{F_{\alpha}^{c}}$ is a collection of open sets. By part (a) above, we see that $\cup_{\alpha} F_{\alpha}^{c}$ is open. But observe that  $\cup_{\alpha} F_{\alpha}^{c} = (\cap_{\alpha} F_{\alpha})^{c}$ by our lemma. Since the left side of the equation is open, it follows that the right hand side is open. Taking the complement of the right hand side yields $( (\cap_{\alpha} F_{\alpha})^{c})^{c}=(\cap_{\alpha} F_{\alpha})$ and by Theorem 2.23, it follows that $(\cap_{\alpha} F_{\alpha})$ is closed which is precisely what we needed to show. \\ \\
+
+\item For any finite collection $G_{1}, \ldots G_{n}$ of open sets, $\cap^{n}_{i=1}G_{i}$ is open. \\ \\
+Let $x \in \cap^{n}_{i=1}G_{i}$. We would like to show whatever $x$ is, there exists an $N_{x}(r)$ such that   $N_{x}(r) \subset \cap^{n}_{i=1}G_{i}$. Let us use the assumption that $G_{1}, \ldots G_{n}$ are open sets. This means for any $y \in \cap^{n}_{i=1}G_{i}$, $y \in G_{b}$ for all $b \in \alpha$ but since  $G_{b}$ is open, there exists a neighborhood of $y$ of radius $r_{b}$  contained in $G_{b}$. Since $b$ was arbitrary, this holds for the entire collection. This suggests that we take $r$ to be the minimum of $\braces{r_{1}, r_{2}, \ldots, r_{n}}$.  It is clear such a minimum exists since this is a finite list of real numbers which has an ordering. Then $N_{x}(r) \subset G_{b}$ for $1 \leq b \leq n$ and so $N_{x}(r) \subset \cap^{n}_{i=1}G_{i}$ which shows that $\cap^{n}_{i=1}G_{i}$  is open because we showed that each point in the intersection of $G_{i}$ is a limit point. \\ \\ 
+
+\item For any finite collection $F_{1}, \ldots F_{n}$ of closed sets, $\cup^{n}_{i=1}F_{i}$ is closed. \\ 
+
+Since $F_{i}$ is closed for $1 \leq i \leq n$, we know that $F_{i}^{c}$ is open by Theorem 2.23. This means that $F_{1}^{c}, \ldots, F_{n}^{c}$ is a collection of open sets. By part $(c)$, it follows immediately that $\cap^{n}_{i=1} F_{i}^{c}$ is open. By Theorem 2.22, we see that  \begin{equation}
+\bigcap^{n}_{i=1} F_{i}^{c} = \left(\bigcup_{i=1}^{n} F_{i} \right)^{c}
+\end{equation}
+Since we stated that the left hand side of the equation is open, it follows that the right hand side of the equation is open. Now by Theorem 2.23, the complement of $(\bigcup_{i=1}^{n} F_{i})^{c}$ is closed, but the complement of $(\bigcup_{i=1}^{n} F_{i})^{c}$ is precisely $\cup^{n}_{i=1}F_{i}$ which proves the theorem. \\ \\
+
+\end{enumerate}
+
+\problem Construct a bounded set of real numbers with exactly three limit points. \\ 
+
+Here is the intuition behind approaching this problem. We would like to come up with a bounded set of real numbers which has exactly three limit points. That is, there are only three such real numbers with the property that whenever we draw a neighborhood around them, there always exist another point in that neighborhood not equal to the point which the neighborhood is centered around. Since we are dealing with $\mathbb{R}$, the neighborhood of any point refers to an interval. This notion is closely related to our discussion of infimum  in class. Namely, looking at example 1.9c in Rudin, we see that the set $\braces{1/n~|~n \in \mathbb{N}}$ has an infimum of 0.  Let us take the set $E$ to be $\braces{1/n~|~n \in \mathbb{N}} \cup \braces{1+ 1/n~|~n \in \mathbb{N}} \cup  \braces{2+ 1/n~|~n \in \mathbb{N}}$. It is clear that this is a bounded set as $0 < a < 3, \forall a \in E$. Moreover, there are only three limit points, $0, 1,$ and $2$. The reason 0 is a limit point is because given any neighborhood or interval of length $r$, we can make $n$ sufficiently large such that $1/n < r$. A similar argument goes for the limit points 1 and 2. Lastly, I claim there are no other limit points. This is because the natural numbers fail to be dense in $\mathbb{R}$. Let $c$ be the \qu{alleged} limit point. It is clear that $c$ must be between 0 and 3 otherwise $c$ is not a limit point. Since $c \neq 1, 2, ~ \text{or}~ 3$, then $c = (x)+(1/n)$ where $x=0, 1$ or 2. Alternatively, $c= (nx+1)/n$. Then we have 
+\begin{align*}
+x + \dfrac{1}{n+1} < x + \dfrac{1}{n} < x + \dfrac{1}{n-1}
+\end{align*}
+where $x + \dfrac{1}{n+1}$ is the largest real number in $E$ which is less than  $x + \dfrac{1}{n}$ and $x + \dfrac{1}{n-1}$ is the smallest real number in $E$ which is greater than $x+ \dfrac{1}{n}$. We see that the neighborhood of $\dfrac{1}{n + \dfrac{1}{2}}$ centered around $x + \dfrac{1}{n}$ contains no other point in $E$ except for $x + \dfrac{1}{n}$ and thus $c$ cannot be a limit point. \\ \\
+
+\problem Let $E'$ be the set of all limit points of a set $E$. 
+\begin{enumerate}
+\item Prove that $E'$ is closed.
+\item Prove that $E$ and $\bar{E}$ have the same limit points.
+\item Do $E$ and $E'$ have the same limit points?
+\end{enumerate}  
+
+Solutions:
+
+\begin{enumerate}
+\item In order to show that $E'$ is closed we must show that every limit point of $E'$ is a point of $E'$. So let $x$ be a limit point of $E'$. By definition of limit point, all neighborhoods of $x$ contains some point, not equal to $x$, which is in $E'$. In particular, let $y \in E'$ be in the neighborhood $N_{r/2}(x)$ which implies that $d(x,y)< r/2$. Moreover, since $y \in E'$, then $y$ is a limit point of $E$ by definition of $E'$. Therefore there exists some point $z \in E$ where $z \in N_{r/4}(y)$. Additionally, we know that $d(y,z)<r/4$. By the triangle inequality, we have 
+\begin{align*}
+d(x,z) \leq d(x,y) + d(y,z) < r/2 + r/4 < r
+\end{align*} 
+so $d(x,z)<r$. This means that $z$ is in $N_{r}(x)$, so $x$ is a limit point of $E$. Since $x$ is an arbitrary limit point of $E'$ and we showed that $x$ is a limit point of $E$, then $x \in E'$ because $E'$ contains all the limit point of $E$. Therefore, $E'$ is closed because every limit point of $E'$ is a point of $E'$. \\
+
+\item We now show that $E$ and $\bar{E}$ have the same limit points, that is $E'=\bar{E}'$, where $X'$ denotes the set of limit points of $X$. To prove this, we will show set equality. First recall that $\bar{E} = E \cup E'$. Let $x \in E'$, that is, $x$ is a limit point of $E$. So for all $r$, we know that $N_{r}(x)$ contains some point $y \neq x$ such that $y \in E$. Since $E \subset \bar{E}$, then $y \in \bar{E}$. Since $y \in N_{r}(x)$, and $y \in \bar{E}$, we have $x \in \bar{E}'$ because we showed for every neighborhood of $x$, there is some $y$ which belongs to $\bar{E}$ where $x \neq y$. This shows $E' \subset \bar{E}'$. \\ 
+
+We next show that $\bar{E}' \subset E'$. Let $x \in \bar{E}'$. That is, $x$ is a limit point of $\bar{E}$ which means for all neighborhoods, $N_{r}(x)$, there is some point $y \neq x$ such that $y \in \bar{E}$. We have two cases: either $y \in E$ or $y \in E'$. \\ \\
+First assume that $y \in E'$ meaning that $y$ is a limit point of $E$. So all neighborhoods of $y$ contain a point $z \in E$ such that $y \neq z$. In particular, let $z \in N_{r'}(y)$ where $r' = r - d(x,y)$. Note that $z \in N_{r'}(y) \subset N_{r}(x)$ and $z \neq x$ since $x \notin N_{r'}(y)$. Therefore every neighborhood of $x$ contains a point $z$ with $z \in E$ and so $x$ is a limit point of $E$. Thus $x \in E'$. \\ 
+
+Note that if we assumed that $y \in E$, then we have shown for every neighborhood of $x$, there is some $y \neq x$ where $y \in E$ and so $x$ satisfies the definition of a limit point. Thus $x$ is a limit point of $E$ and so $x \in E'$.  \\ \\
+So in either case, $x \in E'$ which proves that $E'=\bar{E}'$. \\ 
+
+\item Lastly, $E$ and $E'$ do not necessarily have the same limit points. Take $E= \braces{1/n~|~n \in \mathbb{N}}$. Then $E'=\braces{0}$ which is the only limit point. Now consider the set of limit points of $E'$ which we shall denote $E''$. Then $E''= \emptyset$ since we proved that a finite point set has no limit points (see corollary of Theorem 2.20). \\ \\
+\end{enumerate}
+
+
+\problem Let $A_{1}, A_{2}, \ldots $ be subsets of a metric space.
+\begin{enumerate}
+\item If $B_{n}= \cup^{\infty}_{i=1} A_{i}$ prove that $\bar{B_{n}}=\cup^{\infty}_{i=1} \bar{A_{i}}$ for $n=1,2, \ldots$
+\item If $B = \cup^{\infty }_{i=1}A_{i}$ prove that $\cup^{\infty }_{i=1} \bar{A_{i}} \subset \bar{B}$ 
+\item Show by example that this inclusion can be proper. 
+\end{enumerate}
+
+
+\begin{enumerate}
+
+\item As usual, we will show set equality. Assume $x \in \bar{B_{n}}$. Then $x \in B_{n}$ or $x \in B_{n}'$ by the definition of $ \bar{B_{n}}$. So we have two cases. \\ 
+
+Case One: Assume that $x \in B_{n}$. Then $x \in A_{k}$ for some $A_{k} \in \cup_{i=1}^{\infty} A_{i}$. Since $x \in A_{k}$, then $x \in \bar{A_{k}'}$ and thus $x \in  \cup^{\infty}_{i=1} \bar{A_{i}}$. \\ 
+
+Case Two: Now assume that  $x \in B_{n}'$. That is, $x$ is a limit point of $B_{n}$. Then $x$ must be a limit point for some $A_{k} \in \cup_{i=1}^{\infty} A_{i}$. To see this, assume that $x$ is not a limit point for any $A_{k} \in \cup_{i=1}^{\infty} A_{i}$. Then for each $i$, there is some neighborhood, $N_{r_{i}}(x)$ that contains no elements of $A_{i}$. Let $s= \text{min} \braces{r_{i}}$. Then $N_{s}(x)$ contains no elements from any $A_{i}$ since $N_{s}(x) \subseteq N_{r_{i}}(x)$ for each $i$. Now since this neighborhood contains no points for any $A_{i}$, then it contains no points of $B_{n}$ since $B_{n}= \cup_{i=1}^{\infty} A_{i}$. But this contradicts the fact that $x$ is a limit point of $B_{n}$. This contradiction tells us that $x$ must be a limit point of some $A_{k} \in \cup_{i=1}^{\infty} A_{i}$. Therefore, $x \in \bar{A_{k}}$ which means that $x \in \cup^{\infty}_{i=1} \bar{A_{i}}$. \\ 
+
+So in either case, $x \in \cup^{\infty}_{i=1} \bar{A_{i}}$. This shows that $\bar{B_{n}}=\cup^{\infty}_{i=1} \bar{A_{i}}$ for $n=1,2, \ldots$. \\ 
+
+\item We now show that if $B = \cup^{\infty }_{i=1}A_{i}$ then $\cup^{\infty }_{i=1} \bar{A_{i}} \subset \bar{B}$. Let $x \in \cup^{\infty }_{i=1} \bar{A_{i}}$. Then $x \in  \bar{A_{i}}$ for some $i$. Note that $\bar{A_{i}} = A_{i} \cup A_{i}'$ so we have two cases: either $x \in A_{i}$ or $x \in A_{i}'$. \\ \\
+Case One: Assume that $x \in A_{i}$. Since $A_{i} \subset B \subset \bar{B}$, then $x \in \bar{B}$ which is what we needed to show. \\ 
+
+Case Two: Assume that $x \in A_{i}'$. Then this means $x$ is a limit point of $A_{i}$. That is, for every neighborhood of $x$, there exists some point $y \in A_{i}$ where $x \neq y$ such that $d(x,y)<r$. By our assumption regarding $B$, we have that $A_{i} \subset B$ and so $y \in B$. This shows that $x$ is a limit point of $B$, so $x \in B'$ and by definition $B' \subset \bar{B}$, this $x \in \bar{B}$. Therefore $\cup^{\infty }_{i=1} \bar{A_{i}} \subset \bar{B}$. \\ \\
+
+\item Take $A_{i}$ to be $A_{i}=\braces{1/i}$ where $ i \in \mathbb{N}$. By the corollary to Theorem 2.20, we have $\bar{A_{i}}=A_{i}$ since finite sets have no limit points. By our definition of $A_{i}$, we have $B= \braces{1/i~|~i \in \mathbb{N}}$. Observe that $\bar{B} = B \cup B' = \braces{1/i~|~i \in \mathbb{N}} \cup \braces{0}$ since we proved in problem 5 that the limit point of $B$ is 0. Thus we have the following:
+\begin{align*}
+& \cup^{\infty }_{i=1} \bar{A_{i}} \subset \bar{B} \\
+& \rightarrow \braces{1/i~|~i \in \mathbb{N}} \subset \braces{1/i~|~i \in \mathbb{N}} \cup \braces{0}
+\end{align*}
+which shows the inclusion is proper because $\braces{0}$ does not belong to the left hand side.
+\end{enumerate}
+\end{document}

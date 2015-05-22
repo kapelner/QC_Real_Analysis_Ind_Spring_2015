@@ -1,0 +1,165 @@
+\documentclass[12pt]{article} 
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{color}
+\usepackage{enumerate}
+\usepackage[hyperfootnotes=false]{hyperref}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{corollary}{Corollary}[theorem]
+\newtheorem{lemma}[theorem]{Lemma}
+\title{Math 650.2  Problem Set 10}
+\author{Elliot Gangaram\\
+\date{}
+\ elliot.gangaram@gmail.com \\}
+\include{preamble}
+
+
+\newtoggle{spacingmode}
+\begin{document}
+\maketitle
+
+\problem
+Prove Theorem 2.12 in Rudin. \\ \\
+
+\noindent \textbf{Theorem 2.12}: Let $E_{n}$, $n=1, 2, 3 \ldots$, be a sequence of countable sets, and put 
+\begin{align*}
+S= \bigcup^{\infty}_{n=1} E_{n}
+\end{align*}
+Then $S$ is countable. \\ \\
+
+\noindent \textbf{Proof}: First let us take a moment and attempt to explain what this theorem is telling us. This theorem is saying that the union of a countable collection of countable sets is countable. When we use the word \qu{collection}, we mean the set $\braces{E_{1}, E_{2}, \ldots E_{n}, \ldots}$. To prove this theorem, we will show there exists a one to one map $f:\bigcup^{\infty}_{n=1} E_{n} \rightarrow \mathbb{N}$. From Homework 7, Problem 5, it will then follow that $S$ is countable. \\ \\ 
+
+We will first show that we can find disjoint countable sets $B_{n}$ such that $\bigcup^{\infty}_{n=1} E_{n}=\bigcup^{\infty}_{n=1} B_{n}$. We can construct these sets as follows. Let \\ 
+\begin{flushleft}
+$B_{1}=E_{1}$ \\
+$B_{2}=E_{2}-E_{1}$ \\ 
+$B_{3}=E_{3}-(E_{1} \cup E_{2})$ \\
+\ldots \\ 
+\ldots \\
+\ldots \\
+$B_{n}=E_{n}- (E_{1} \cup \ldots \cup E_{n-1})$ \\ 
+\ldots \\
+\ldots \\ 
+\ldots
+\end{flushleft}
+
+It is clear that any two distinct $B_{n}$'s are disjoint. To see this, consider two distinct arbitrary sets, $B_{j}$ and $B_{k}$. WLOG, assume that $j<k$. If $s \in B_{j}$ then $s \in E_{j}-(E_{1} \cup \ldots \cup E_{j-1})$ since that is how we defined $B_{j}$. This implies that $s \in E_{j}$. However $s \notin B_{k}$ because $B_{k} = E_{k} - (E_{1} \cup \ldots \cup E_{j} \ldots \cup E_{k-1})$. Thus, $B_{j} \cap B_{k} = \varnothing$. \\ \\
+
+Now that we have shown that the intersection of the $B_{n}$'s are empty, we must verify our claim that $\bigcup^{\infty}_{n=1} E_{n}=\bigcup^{\infty}_{n=1} B_{n}$. To do this, we will show set equality. \\ \\ 
+
+First observe by the way we have defined $B_{n}$, we have $B_{n} \subseteq E_{n}$. Thus this implies that $\bigcup^{\infty}_{n=1} B_{n} \subseteq \bigcup^{\infty}_{n=1} E_{n}$. \\ \\
+
+Now, let $x \in \bigcup^{\infty}_{n=1} E_{n}$. The only piece of information this tells us that $x$ is in at least one of the $E_{n}$'s. Since $n= 1, 2, 3, \ldots$, pick the smallest $n_{0}$ such that $x \in E_{n_{0}}$. We know the smallest $n_{0}$ exists by a previous homework exercise. Since $x \in E_{n_{0}}$, then $x \in B_{n_{0}}$ since $x \notin E_{1} \cup E_{2} \cup \ldots \cup E_{n_{0}-1}$ by the way we have constructed $B_{n_{0}}$. Therefore, $x \in \bigcup^{\infty}_{n=1} B_{n}$ and so we have established set equality. Using $\bigcup^{\infty}_{n=1} B_{n}$ instead of $\bigcup^{\infty}_{n=1} E_{n}$, we shall show that $\bigcup^{\infty}_{n=1} B_{n}$ is countable which implies that $\bigcup^{\infty}_{n=1} E_{n}$ is countable since they are the same set. \\ \\
+
+First observe that we are given by assumption that each $E_{n}$ is countable. We have proven that a subset of a countable set is also countable and since $B_{n} \subseteq E_{n}$ it follows that $B_{n}$ is countable. This tells us there exists a bijection $f_{n}: B_{n} \rightarrow \mathbb{N}$ for each $n$. \\ \\
+
+Let us list the prime numbers as $p_{1}=2, p_{2}=3, p_{3}=5 \ldots, p_{n}, \ldots$. \\ \\
+
+Define $f:\bigcup^{\infty}_{n=1} B_{n} \rightarrow \mathbb{N}$ as follows: if $x \in B_{n}$ then $f(x)= p_{n}^{f_{n}(x)}$. \\ \\
+
+As an example, if $x \in B_{2}$ then $f_{2}: B_{2} \rightarrow \mathbb{N}$ and $f_{2}(x)$ is some natural number. More concretely, assume that under $f_{2}$ we have $f_{2}(x) = 8$. We know $f_{2}$ exists because we are given that $B_{2}$ is countable. Then $f(x)=p_{2}^{f_{2}(x)}=p_{2}^{8}=3^{8}$. \\ \\
+
+Recall that we proved the intersection between any two distinct sets $B_{j}$ and $B_{k}$ is empty. Note that the function $f(x)$ relies on $f_{n}$. Since an element, $x$ belongs to one and only one of the $B_{n}$'s, then there is no ambiguity in writing $f(x)$. \\ \\
+
+The only thing left to prove is that $f$ is injective. That is, if $f(x)=f(y)$ then $x=y$.  To show this, we will show the contrapositive. Namely, assume $x \neq y$. We wish to prove that this implies $f(x) \neq f(y)$. However, note that $x$ and $y$ can be in the same set, or they may be elements in different sets. So we have two cases: \\ \\
+
+Case One: Let $x \in B_{n}$ and $y \in B_{m}$ and assume that $m \neq n$. Then $f(x)=p_{n}^{f_{n}(x)} \neq p_{m}^{f_{m}(y)} = f(y)$. The reason is that since $m \neq n$, then $p_{n} \neq p_{m}$. By the Fundamental Theorem of Arithmetic, $p_{n}^{f_{n}(x)}$ cannot be factored into a product of $p_{m}$'s and this completes case one. \\ \\ 
+
+Case Two: Now assume $x$ and $y$ are in the same set, call it $B_{n}$. Recall that $f_{n}$ is a bijection and hence one to one. This tells us that $f_{n}(x) \neq f_{n}(y)$. So $f(x)=p_{n}^{f_{n}(x)} \neq p_{n}^{f_{n}(y)} = f(y)$ by the Fundamental Theorem of Arithmetic because $f(x)$ and $f(y)$ have a different number of $p_{n}$'s in their prime factorizations. \\ \\
+
+Thus $f$ is one to one and therefore $\bigcup^{\infty}_{n=1} B_{n}$ is countable.  \\ \\
+
+\problem
+Prove the corollary to Theorem 2.12 \\ \\
+
+\noindent \textbf{Corollary}: Suppose $A$ is at most countable, and, for every $\alpha \in A$, $B_{\alpha}$ is at most countable. Put 
+\begin{align*}
+T= \bigcup_{\alpha \in A}B_{\alpha}
+\end{align*}
+Then $T$ is at most countable. \\ \\
+
+\noindent \textbf{Proof}: Since $A$ is at most countable, then there exists a bijection $f: A \rightarrow \mathbb{N}$ defined by $f(\alpha)=n$. So we may write $T= \bigcup_{\alpha \in A}B_{\alpha} = \bigcup_{f(\alpha) \in \mathbb{N}} B_{f(\alpha)}$. Note that there are two cases. Either $A$ is finite or $A$ is countable. \\ \\
+
+If $A$ is countable, then $A \sim\mathbb{N}$ and thus it follows directly from Theorem 2.12 that $T$ is countable since $T= \bigcup_{\alpha \in A}B_{\alpha}=\bigcup_{f(\alpha) \in \mathbb{N}} B_{f(\alpha)} =  \bigcup^{\infty}_{n=1} B_{n}$ which is precisely what we proved in Problem 1. \\ \\
+
+Now if $A$ is finite, then $A \sim \mathbb{N}^{*}$ where the $^{*}$ indicates that $A$ is a subset of $\mathbb{N}$. Then we have $T= \bigcup_{\alpha \in A}B_{\alpha}=\bigcup_{f(\alpha) \in \mathbb{N}^{*}} B_{f(\alpha)} =  \bigcup^{k}_{n=1} B_{n}$ for some integer $k$. However, $\bigcup^{k}_{n=1} B_{n}$ is a subset of $\bigcup^{\infty}_{n=1} B_{n}$ and we proved that any subset of a countable set is countable. Since we have previously shown that $\bigcup^{\infty}_{n=1} B_{n}$ is countable, it follows that $\bigcup^{k}_{n=1} B_{n}$ is countable and hence $T$ is countable. \\ \\
+
+
+
+\problem Prove theorem 2.13 in Rudin. \\ \\
+\textbf{Theorem 2.13}: Let $A$ be a countable set and let $B_{n}$ be the set of all $n$-tuples $(a_{1}, a_{2}, \ldots a_{n})$ where $a_{k} \in A$ ($k=1, 2, \ldots, n$) and the elements $a_{1}, a_{2}, \ldots a_{n}$ need not be distinct. Then $B_{n}$ is countable. \\ \\
+
+It appears that Rudin's proof, to some degree, is incorrect as the concept of ordered $n$-tuples as not been defined. In any case, the following proof attempts to prove theorem 2.13. \\ \\
+
+\noindent \textbf{Proof}: To prove this statement we will use strong induction.  \\ \\ 
+
+Base Case. Let $n=1$. Then Rudin claims that $B_{1}$ is countable since $B_{1}=A$ and $A$ itself is countable. \\ 
+
+Before continuing the proof, the following point should be noted. Since the above statement holds for any such $A$, take $A=\braces{1,2,3}$. Then $B_{1}$ by definition equals to $\braces{(1),(2),(3)}$. To claim that $B_{1}=A$ is incorrect as the elements of $B_{1}$ are $1$-tuples and the elements of $A$ are just a few integers. More rigorously, if $x \in B_{1}$ then $x=(1), (2)$ or $(3)$, and it is clear that $x \notin A$ which shows these sets are not equal. Thus, when Rudin makes the claim that $B_{1}=A$ it appears that he is assuming the ordered pair $(a)$ is the same as $a$. With this noted, we continue the proof. \\ 
+
+Strong Inductive Step: Assume that the claim holds true for all $n$ up to $B_{n-1}$. We would like to show that the claim holds for $B_{n}$. What do the elements in $B_{n}$ look like? The elements of $B_{n}$, by definition are $n$-tuples. Let us denote these elements as $(b_{1},b_{2},\ldots , b_{n-1}, b_{a})$ where $b_{1}, b_{2}, \ldots b_{n-1}, b_{a} \in A$. Rudin then writes these elements as $(b,a)$ where $b \in B_{n-1}$ and $a \in A$. Here, he is implicitly assuming that in general $((x_{1}, x_{2}, \ldots, x_{k}), x_{k+1})=(x_{1}, x_{2}, \ldots, x_{k}, x_{k+1})$.  \\ 
+
+Continuing with the notion that $(b,a)$ where $b \in B_{n-1}$ and $a \in A$, we are led to the conclusion that the set of ordered pairs $(b,a)$ is equivalent to $A$, meaning there exists a bijection from $A$ to $B_{n}$. This bijection is given by $f(a)=(b,a)$. To prove this is a bijection note that if $f(a)=f(x)$ then $(b,a)=(b,x)$ and so $a=x$. We also see this function is onto since given any ordered pair in $B_{n}$, call it $(x,y)$, then this ordered pair is mapped from the element $y \in A$. This bijection shows that $B_{n}$ is countable which completes the proof. \\ \\
+
+\problem
+Find an explicit bijection $\phi: \mathbb{N} \rightarrow \mathbb{Q}$. \\ \\
+
+Motivation: In the previous homework, we showed there exists a bijection between $\mathbb{N}$ and $\mathbb{Q}^{+}$. We now attempt to show there exists an explicit bijection between $\mathbb{N}$ and $\mathbb{Q}$. Using the result from Homework 9, it appears easier to first create a bijection between $\mathbb{Z}$ and $\mathbb{Q}$. The reason for doing so is because we have already created a bijection from the positive integers to the positive rationals. So it only seems natural that by adding in the negative integers, we can map them to the negative rationals and thus obtain a bijection. We do this as follows:
+
+$$
+g(z) =
+\begin{cases}
+\dfrac{a_{z}}{a_{z+1}}, & \text{if } z>0 \\ \\
+- \dfrac{a_{-z}}{a_{-(z-1)}}, & \text{if } z<0 \\ \\
+0, & \text{if } z=0
+\end{cases}
+$$
+where the $a_{i}$ term refers to the $i^{th}$ term in Stern's diatomic series as defined in Homework 9, Problem 3. \\ \\
+
+We already referenced a proof by Northshield showing that $g(z)=\dfrac{a_{z}}{a_{z+1}}$ if $z>0$ is a bijection from $\mathbb{N} \rightarrow \mathbb{Q}^{+}$ in Problem 3 of the previous homework.\footnote{See Theorem 5.1 \href{http://faculty.plattsburgh.edu/sam.northshield/08-0412.pdf}{here}.} Equivalently, we may write this as $g$ is a bijection from $\mathbb{Z}^{+}$ to $\mathbb{Q}^{+}$ for $z>0$. Now, it follows by the symmetry of the problem that $g(z)=- \dfrac{a_{-z}}{a_{-(z-1)}}$ is a bijection from $\mathbb{Z}^{-}$ to $\mathbb{Q}^{-}$ if $z<0$. \footnote{As an example, suppose we are given that $\psi:A \rightarrow B$ where $A=\braces{1,2,3},~B=\braces{4,5,6}$. Moreover, we are given that $\psi(1)=4, \psi(2)=5, \psi(3)=6$. It is clear that $\psi$ is a bijection. However, now consider $B'=\braces{4,5,6,-4,-5,-6}$. A natural way to create a bijection is to enlarge set $A$ as follows: $A' = \braces{1,2,3,-1,-2,-3}$ and then define $\psi(1)=4, \psi(2)=5, \psi(3)=6, \psi(-1)=-4, \psi(-2)=-5, \psi(-3)=-6$. This is essentially what we are doing here. We are given $g$ is bijection from one set of positive integers to a set of positive rationals. We can then \qu{extend} $g$ by mapping the negative integers to the negative rationals. However, this leaves one integer, 0, and one rational number, 0, not accounted for so we let $g(0)=0$ thus establishing a bijection.} That is, $g$ is a bijection between the negative integers and the negative rationals. So we have covered all the positive and negative rationals. The only element in the rationals that is not accounted for is the zero element. So we shall have the integer 0 mapping to the rational number 0.  However, $g$ is a bijection from the integers to the rationals. We wish to find a bijection from the natural numbers to the rationals. So we shall now define the well-known bijection from the natural numbers to the integers.
+
+$$
+h(n) =
+\begin{cases}
+\dfrac{n}{2}, & \text{if }n\text{ is even} \\
+-\dfrac{n-1}{2}, & \text{if }n\text{ is odd}
+\end{cases}
+$$ \\
+
+We proved in Homework 7, Problem 3 that this is a bijection. It follows that $g~\circ~ h: \mathbb{N} \rightarrow \mathbb{Q}$ is a bijection since the composition of two bijections is a bijection. We showed that if two functions are injective, then their composition is also injective in Homework 7, Problem 4. So we need to only check that the composition is surjective. However, this is trivial since all elements in $\mathbb{Q}$ comes from some element in $\mathbb{Z}$ and every element in $\mathbb{Z}$ comes from an element in $\mathbb{N}$ so it follows that every element in $\mathbb{Q}$ comes from an element in $\mathbb{N}$. Thus, we have an explicit bijection from $\mathbb{N}$ to $\mathbb{Q}$. \\ \\
+
+However, given a rational number, can we find what this rational number maps to in the set of natural numbers? The answer is yes and is given by the following piece-wise defined function which is symmetric to the function defined in the previous homework. We first define $g^{-1}: \mathbb{Q} \rightarrow \mathbb{Z}$ as 
+
+$$
+g^{-1}(q) =
+\begin{cases}
+2f^{-1}(q-1)+1, & \text{if } q>1 \\
+1, & \text{if } q=1 \\
+2f^{-1} \bigg(\dfrac{q}{1-q} \bigg), & \text{if } 0<q<1 \\ 
+0, & \text{if } q=0  \\
+-2 \Bigg(f^{-1} \bigg(\dfrac{-q}{1+q}\bigg) \Bigg), & \text{if } -1<q<0 \\
+-1, & \text{if } q=-1 \\ 
+-2(f^{-1}(-q-1)+1), & \text{if } q<-1
+\end{cases}
+$$ \\
+
+\noindent where $f^{-1}$, is given as follows: \\ \\
+$f^{-1}(1)=1 \\
+f^{-1}(q)= 2f^{-1} \bigg(\dfrac{q}{1-q} \bigg) ~ \text{if} ~ q<1 \\
+f^{-1}(q) = 2f^{-1}(q-1)+1 ~\text{if}~ q>1$ \\ 
+
+We now define the function $h^{-1}: \mathbb{Z} \rightarrow \mathbb{N}$ as follows: 
+
+$$
+h^{-1}(z)=
+\begin{cases}
+2z, & \text{if } z>0 \\
+1, & \text{if } z=0 \\
+-2z+1, & \text{if } z<0 \\
+\end{cases}
+$$ \\ \\
+
+Although I do not prove this formally, then $h^{-1} \circ g^{-1}: \mathbb{Q} \rightarrow \mathbb{N}$ is the bijection we are looking for.
+\end{document}

@@ -1,0 +1,324 @@
+\documentclass[12pt]{article} 
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{color}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{corollary}{Corollary}[theorem]
+\newtheorem{lemma}[theorem]{Lemma}
+\title{Math 650.2 Homework 4}
+\author{Elliot Gangaram\\
+\date{}
+\ elliot.gangaram@gmail.com \\}
+\include{preamble}
+
+
+\newtoggle{spacingmode}
+\begin{document}
+\maketitle
+
+\problem Denseness
+\begin{enumerate}
+\item Prove that $\mathbb{Q}$ is dense in $\mathbb{Q}$.  \\ \\
+Let $x \in \mathbb{Q}$ and let $y \in \mathbb{Q}$. WLOG, assume that $x<y$. We want to show that there exists a $q \in \mathbb{Q}$ such that $x<q<y$. I claim that $q$ can be taken to be $\dfrac{x+y}{2}$. First note that by the closure property of the field $\mathbb{Q}$, we have $x+y \in \mathbb{Q}$ and $\dfrac{1}{2} \in \mathbb{Q}$, thus $\dfrac{x+y}{2} \in \mathbb{Q}$. We now must show that $x< \dfrac{x+y}{2}<y$. We will first show $x< \dfrac{x+y}{2}$. \begin{gather*}
+      x<y \\
+x+x < x+y  \\
+2x < x + y \\
+x < \dfrac{x+y}{2}
+\end{gather*}
+
+We must now show that  $\dfrac{x+y}{2}<y$.
+\begin{gather*}
+      x<y \\
+x+y < y+y \\ 
+x+y < 2y \\
+\dfrac{x+y}{2} < y
+\end{gather*}
+Hence, $\mathbb{Q}$ is dense in $\mathbb{Q}$. \\ \\
+
+\item Show that $\mathbb{R}$ is dense in $\mathbb{R}$. \\ \\
+
+Let $x \in \mathbb{R}$ and let $y \in \mathbb{R}$ such that $x<y$. We want to show that there exists a $q \in \mathbb{R}$ such that $x<q<y$. By the same argument above, let us take $q=\dfrac{x+y}{2}$. By the closure property of $\mathbb{R}$ it is clear that $\dfrac{x+y}{2} \in \mathbb{R}$.  We will first show $x< \dfrac{x+y}{2}$. \begin{align*}
+      x<y \\
+x+x < x+y \\ 
+2x < x + y \\
+x < \dfrac{x+y}{2}
+\end{align*}
+We must now show that  $\dfrac{x+y}{2}<y$.
+\begin{align*}
+      x<y \\
+x+y < y+y \\ 
+x+y < 2y \\
+\dfrac{x+y}{2} < y
+\end{align*}
+\\ \\
+
+
+\item Prove that $\mathbb{R}$ is dense in $\mathbb{Q}$. \\ \\
+Let $x \in \mathbb{Q}$ and let $y \in \mathbb{Q}$ such that $x<y$. We want to show that there exists a $q \in \mathbb{R}$ such that $x<q<y$. \\
+We will make use of the Archimedean Property. Since $x<y$ this implies that $y-x>0$. Since $1$ is a real number, then we may invoke the Archimedean property. That is,there exists a positive integer $n$ such that $n(y-x)>1$. So we have
+\begin{align*}
+n(y-x)>1 \\
+ny-nx>1
+\end{align*} \begin{equation}
+ny>nx+1
+\end{equation}
+Let us set Equation 1 aside and come back to it later. Let $m$ be the smallest integer such that $m>nx$. This implies that \begin{equation}
+\dfrac{m}{n} > x
+\end{equation}. \\
+
+Since $m$ is the smallest integer such that $m>nx$, then $m-1 \leq nx$. To see this, note if $m-1 > nx$, then we would have $m> m-1 > nx$ which contradicts our choice of $m$. So $m-1 \leq nx$ implies $m \leq nx+1$. So Equation 1 and $m \leq nx+1$ implies
+\begin{equation}
+m \leq nx+1 < ny 
+\end{equation}
+\begin{equation}
+m < ny 
+\end{equation}
+\begin{equation}
+\dfrac{m}{n} < y
+\end{equation}
+Putting Eq.2 and Eq.5 together tells us
+\begin{equation}
+x < \dfrac{m}{n} < y 
+\end{equation}
+To complete the proof, we must show $\dfrac{m}{n}$ is a real number. Since $m$ and $n$ are defined to be integers and $n$ cannot be zero since $n$ is positive, then $\dfrac{m}{n} \in \mathbb{Q}$ which is a subset of $\mathbb{R}$ and hence $\dfrac{m}{n} \in \mathbb{R}$ .
+
+\end{enumerate}
+
+\problem 
+\begin{enumerate}
+
+
+\item Prove Rudin's Theorem 1.20 \\ \\
+
+
+\textbf{Theorem 1.20} For every real $x>0$ and every integer $n>0$ there is one and only one positive real $y$ such that $y^{n}=x$ \\ 
+  
+\textbf{Proof}: We first will show uniqueness. Assume that there exists two distinct $y$'s, namely $y_{1}$ and $y_{2}$ such that $y_{1} ^{n} = x$ and $y_{2} ^{n} = x$. Since  $y_{1}$ and $y_{2}$ are distinct, we have either $y_{1} < y_{2}$ or $y_{1} > y_{2}$. WLOG, assume $y_{1} < y_{2}$. Then we have the following. \begin{align*}
+y_{1} < y_{2} \\
+y_{1} ^{n} < y_{2} ^{n} \\
+x < x
+\end{align*}
+Contradiction! Thus, it must be the case that $y_{1}=y_{2}$ and so $y$ is unique. \\ \\
+
+
+Now we will prove the existence of such a $y$. To do so, let $E = \braces{t \; |\; t>0, t \in \mathbb{R} \; \text{and} \; t^{n}<x}$. We will first show that $E$ is not empty. To show this, it suffices to take $t=\dfrac{x}{1+x}$. Note that for sufficiently large $x$, $\dfrac{x}{1+x}$ is close to $1$ but never equal to $1$. Moreover, since $x>0$, then the smallest $\dfrac{x}{1+x}$ can be is some number close to $0$. Thus, $0 \leq t < 1$. \\ \\ By Lemma 1, (see below) this implies $t^{n} \leq t < x$ and so there exists some $t \in E$. \\ \\ Now that we know $E$ is not empty, we will also show that $E$ is bounded above. I claim that $1+x$ is an upper bound of $E$. That is, for all $t \in E$, $t \leq x+1$. To see this, we will do proof by contradiction. Assume that $t > 1+x$, where $t \in E$. Then, by Lemma 2, we have $t^{n} \geq t > x$, but this implies that $t \notin E$ and we have reached our contradiction. This tells us that $E$ is a nonempty subset of $\mathbb{R}$ which is bounded above. By the LUB property of $\mathbb{R}$, the LUB of $E$ exists. Let $y=$ sup $E$.\\ \\
+
+
+We want to show that $y^{n}=x$. Well, since we are in an ordered set, if we can show that both $y^{n}<x$ and $y^{n}>x$ fails to hold, then it must mean that $y^{n}=x$. In order to see this, we will use the result from Lemma 4, namely
+\begin{equation}
+b^{n}-a^{n} < (b-a)nb^{n-1} \; \text{where} \; 0<a<b.
+\end{equation} \\ 
+
+
+Case One: We will first show that $y^{n}<x$ leads to a contradiction. So assume $y^{n}<x$. Choose an $h$ such that $0<h<1$ and 
+\begin{equation}
+h< \dfrac{x-y^{n}}{n(y+1)^{n-1}}
+\end{equation}
+Note that the right hand side of the above equation is positive so it follows by the denseness of $\mathbb{R} \; \text{in} \; \mathbb{R}$ that such an $h$ exists. With regards to Equation 7, substitute in $a=y$ and $b=y+h$. It follows  that 
+\begin{equation}
+(y+h)^{n} - y^{n} < hn(y+h)^{n-1} < hn(y+1)^{n-1} < x-y^{n}
+\end{equation}
+Note the first inequality, $(y+h)^{n} - y^{n} < hn(y+h)^{n-1}$ is a result from Eq. 7 while $hn(y+h)^{n-1} < hn(y+1)^{n-1}$ follows since $h<1$. The last inequality, $hn(y+1)^{n-1} < x-y^{n}$ comes directly from Eq. 8.  \\ \\
+
+
+So, by Eq. 9, we have $(y+h)^{n} - y^{n}< x-y^{n}$ so $(y+h)^{n} < x$, which shows $y+h \in E$. Since $y+h > y$, this contradicts the fact that $y$ is an upper bound of $E$. \\ \\
+
+
+Case Two: We now show that $y^{n}>x$ fails to hold. Assume $y^{n}>x$. Let
+\begin{equation}
+k = \dfrac{y^{n}-x}{ny^{n-1}}
+\end{equation}
+Then we have $0<k<y$. Why is $0<k$? Well since $y^{n}>x$ the numerator of Equation 10 will always be bigger than 0. $0$ divided by any nonzero real number, as seen in the denominator, will still give us 0. Hence $0<k$. Moreover, we have $k<y$ since the ratio between the numerator and denominator of Equation 10 can be at most $y - \epsilon$ where $\epsilon$ is some small positive real number. To see this, let $x$ be any positive real number as defined before and the smallest $n$ can be is $n=1$. Then as $x$ approaches 0 from the right, $x=0$ but can never actually be $0$ based on the restriction of $x$. So this case tells us $k<y$. Now as $x$ and $n$ increases, the ratio between the numerator and denominator becomes smaller and so that ratio must be less than $y$. \\ \\
+
+Now if $y-k \leq t$, then this implies that 
+\begin{equation} 
+y^{n}-t^{n} \leq y^{n} - (y-k)^{n} < kny^{n-1} = y^{n}-x
+\end{equation}
+Note that we get $y^{n}-t^{n} \leq y^{n} - (y-k)^{n}$ from using the assumption that $t \geq y-k$. From there, we use Equation 7, to show $y^{n} - (y-k)^{n} < kny^{n-1}$. Lastly, $kny^{n-1} = y^{n}-x$ stems from Equation 10. From the chain of inequalities, we see that $y^{n}-t^{n} < y^{n}-x$, which shows $t^{n} > x$ so $t \notin E$. This means our assumption was wrong, so for $t \in E$, we must have $y-k>t$. However this implies that $y-k$ is an upper bound of $E$. Since we assumed  $y$ is the least upper bound of $E$ and since $y-k<y$, we have reached our contradiction. \\ 
+
+
+Thus, it must be the case that $y^{n}=x$. \\
+\end{enumerate}
+\textbf{Lemmas}
+\begin{enumerate}
+\item \textbf{Lemma 1}: Let $x$ be a real positive number, let $n$ be a positive integer and let $t$ have the following restrictions: $t=\dfrac{x}{1+x} \; \text{and} \; t^{n}<x$. Prove that $t^{n} \leq t < x$. \\ \\
+
+
+\textbf{Proof}: We will first show $t^{n} \leq t$. Assume that $t^{n} > t$. Then, substituting in for $t$ yields 
+\begin{align*}
+\bigg (\dfrac{x}{1+x} \bigg )^{n} > \dfrac{x}{1+x} \\
+\dfrac{x^{n}}{(1+x)^{n}}  >  \dfrac{x}{1+x} \\ \\
+x^{n} > x(1+x)^{n-1} \\
+\end{align*}
+which is false since distributing and simplifying the right hand side will yield a $x^{n}$ term accompanied by positive real numbers.  \\ \\ 
+
+We now show $t < x$ by contradiction. Assume that $t \geq x$. Then we have \begin{align*}
+t \geq x \\
+\dfrac{x}{1+x} \geq x \\ \\
+x \geq x(1+x) \\
+1 \geq 1+x \\
+0 \geq x
+\end{align*}
+which is clearly false since $x$ is defined to be positive.\\ \\
+
+
+\item \textbf{Lemma 2}: Let $x$ be a real positive number, let $n$ be a positive integer and let $t$ be such that $t>1+x$. Then $t^{n} \geq t > x$. \\ \\
+
+
+\textbf{Proof}: We will first show $t^{n} \geq t$ by contradiction. Assume that $t^{n}<t$. Then this implies that $t^{n-1}<1$ which is false since $t>1+x$ and therefore $t>1$ so this contradicts $t^{n-1}<1$. \\ \\
+
+We now will show that  $t > x$. Assume that $t \leq x$. Clearly $t$ cannot equal $x$ because this violates $t>1+x$. It is also clear that $t < x$ leads to a contradiction since this again violates $t>1+x$.\\ \\ 
+
+
+\item \textbf{Lemma 3}: Let $a$ and $b$ be real numbers and let $n$ be a positive integer. Then,
+\begin{equation}
+b^{k}-a^{k} = (b-a)(b^{k-1} + b^{k-2}a + \ldots + a^{k-1})
+\end{equation} \\ 
+
+\textbf{Proof}: \\
+\begin{equation*}
+(b-a)(b^{k-1}+b^{k-2}a+ \ldots + a^{k-1})
+\end{equation*}
+\begin{align*}
+= b^{k} + b^{k-1}a + b^{k-2}a^{2} + b^{k-3}a^{3} + \dots + ba^{k-1} - ab^{k-1} - a^{2}b^{k-2} - \ldots - a^{k-1}b-a^{k}
+\end{align*}
+\begin{equation*}
+= b^{k} + (b^{k-1}a -ab^{k-1}) + \ldots + (ba^{k-1} - a^{k-1}b) - a^{k} 
+\end{equation*}
+\begin{equation*}
+=b^{k} - a^{k}
+\end{equation*}
+\item \textbf{Lemma 4}: Let $0<a<b$. Then $b^{n}-a^{n} < (b-a)nb^{n-1}$ \\ \\
+
+
+\textbf{Proof}: Since $b^{n}-a^{n}=(b-a)(b^{n-1} + b^{n-2}a + \ldots + a^{n-1})$, we must show that 
+\begin{align*}
+(b-a)(b^{n-1} + b^{n-2}a + \ldots + a^{n-1}) < (b-a)nb^{n-1}
+\end{align*}
+Since $(b-a)$ is on both sides, the problem reduces to showing that 
+\begin{align*}
+(b^{n-1} + b^{n-2}a + \ldots + a^{n-1})<nb^{n-1}
+\end{align*}
+Since  $0<a<b$, we have \begin{align*}
+(b^{n-1} + b^{n-2}a + \ldots + a^{n-1})< (b^{n-1} + b^{n-2}b + \ldots + b^{n-1})
+\end{align*}
+But notice that the right hand side is precisely $nb^{n-1}$, since $(b^{n-1} + b^{n-2}b + \ldots + b^{n-1})= b^{n-1}+b^{n-1}+ \ldots + b^{n-1}$ where there are a total of n $b^{n-1}$'s and thus we have proved what we needed to show:
+\begin{align*}
+(b^{n-1} + b^{n-2}a + \ldots + a^{n-1})<nb^{n-1}
+\end{align*}
+\item \textbf{Lemma 5}: Suppose $r$ is a rational number, $x$ and $y$ are real numbers, and $r<x+y$. Then there are rational numbers $s<x$ and $t<y$ with $r<s+t<x+y$. \\ \\
+
+
+\textbf{Proof}: Since $r<x+y$, then subtracting $y$ and adding $x$ to both sides yields $r<-y+x<2x)$. Dividing by 2 gives us $\frac{r-y+x}{2} < x$. By Theorem 1.20(b) in Rudin,there exists a rational number $s$ such that \begin{equation*} 
+\frac{r-y+x}{2} <s < x. 
+\end{equation*} Similarly, there exists a rational number $t$ such that 
+\begin{equation*} 
+\frac{r-x+y}{2} < t < y 
+\end{equation*}
+Adding the above equations yields $r<s+t<x+y$.
+\end{enumerate}
+\problem Prove the following corollary of Theorem 1.20
+\begin{enumerate}
+\item \textbf{Corollary}: If $a$ and $b$ are real numbers and $n$ is a positive integer, then 
+\begin{align*}
+(ab)^{1/n}	= a^{1/n}b^{1/n}
+\end{align*} \\ \\
+\textbf{Proof}: Let $\alpha = a^{1/n}$ and let $\beta = b^{1/n}$. Then,
+\begin{align*}
+\alpha^{n} = (a^{1/n})^{n} = (a^{1/n})(a^{1/n}) \ldots (a^{1/n}) = a^{1}
+\end{align*}
+Similarly, $\beta^{n} = b^{1}$. Note that \begin{align*}
+ab = \alpha^{n} \beta^{n} = (\alpha \alpha \dots \alpha)(\beta \beta \ldots \beta) = (\alpha \beta)(\alpha \beta) \ldots (\alpha \beta) = (\alpha \beta)^{n}
+\end{align*}
+Since $ab=(\alpha \beta)^{n}$, then by Theorem 1.20, we have \begin{equation}
+\alpha \beta = (ab)^{1/n}
+\end{equation} 
+Also, based on our definition of $\alpha$ and $\beta$, we have 
+\begin{equation}
+\alpha \beta = a^{1/n}b^{1/n}
+\end{equation} 
+By the uniqueness portion of Theorem 1.20, it therefore follows that 
+\begin{align*}
+(ab)^{1/n}	= a^{1/n}b^{1/n}
+\end{align*} 
+\end{enumerate}
+
+\problem Rudin Chapter 1 Question 6
+\begin{enumerate}
+\item Fix $b>1$. If $m, n, p, q$ are integers, $n>0$, $q>0$, and $r=\dfrac{m}{n}=\dfrac{p}{q}$, prove that 
+\begin{align*}
+(b^{m})^{1/n}=(b^p)^{1/q}
+\end{align*}
+Hence it makes sense to define $b^{r}=(b^{m})^{1/n}$ \\ \\
+First note that $\dfrac{m}{n}=\dfrac{p}{q}$ implies $mq=np$. We will use this fact in a few short moments. Let $y^{n}=b^{m}$. Using $y^{n}=b^{m}$, we have $y^{nq}=b^{mq}=b^{np}$, by our small fact mentioned above. As shown in the proof of the corollary of Theorem 1.20, we then may conclude that $(y^{q})^{n} = (b^{p})^{n}$. Since $n^{th}$ roots are unique, we see that $y^{q}=b^{p}$. Taking the $q^{th}$ roots of each side yields $y=(b^{p})^{1/q}$.  By a similar argument, we can show $y=(b^{m})^{1/n}$. To see this, we have shown $y^{nq}=b^{mq}$ so $(y^{n})^{q}=(b^{m})^{q}$. Taking the $q^{th}$ root yields $y^{n}=b^{m}$ and by taking the $n^{th}$ root, we have $y=(b^{m})^{1/n}$. Finally, since $y=(b^{p})^{1/q}$ and $y=(b^{m})^{1/n}$, by the uniqueness, we may conclude $(b^{m})^{1/n}=(b^p)^{1/q}$. Since this value is well-defined, that is, the representation does not matter, it is sensible to define   $b^{r}=(b^{m})^{1/n}$.  \\
+\item  Prove that $b^{r+s} = b^{r}b^{s}$ if $r$ and $s$ are rational. \\ \\
+To prove this, we first invoke the following lemma. \\
+Lemma: If $b$ is a real number greater than 1, $x,y \in \mathbb{Z},$ then $b^{x}b^{y} = b^{x+y}.$ \\
+Proof: $b^{x}b^{y} = (b_{x1} \times b_{x2} \ldots \times  b_{xx})(b_{y1} \times  b_{y2} \times  \ldots \times  b_{yy}) = b^{x+y}$ since $b$ is multiplied a total of $x+y$ times. \\ 
+
+We now continue with the original proof. Since $r$ and $s$ are rational, then there exists integers $m,n,p,$ and $q$ such that $m,n,p,q$ are integers, $n \neq 0$, and $q \neq 0$, where $r=\dfrac{m}{n}$ and $s=\dfrac{p}{q}$. Note that $r+s=  \dfrac{m}{n} + \dfrac{p}{q} = \dfrac{mq+np}{nq}$. By part (a) and by the corollary to Theorem 1.20, we may write $b^{r+s}=(b^{mq+nq})^{1/nq} = (b^{mq}b^{np})^{1/nq} = (b^{mq})^{1/nq}(b^{np})^{1/nq} = (b^{m})^{1/n}(b^{p})^{1/q}=b^{r}b^{s}$. \\  \\ 
+
+\item If $x$ is real, define $B(x)$ to be the set of all numbers $b^{t}$ where $t$ is rational and $t \leq x$. Prove that \begin{align*}
+b^{r} = \; \text{sup} \; B(r)
+\end{align*}
+when $r$ is rational. Hence it makes sense to define 
+\begin{align*}
+b^{x}= \; \text{sup} \; B(r)
+\end{align*}  \\ \\
+We now must show that $ b^{r} =$ sup $B(r)$. In order to prove this, we must show two things: \\
+\begin{enumerate}
+\item We must show that $b^{r}$ is an upper bound  for $B(r)$, namely $b^{r} \geq x , \forall x \in B(r)$ 
+\item We must show that any element less than $b^{r}$ fails to be an upper bound for $B(r)$. Namely if $b^{r} > \lambda$ then $\lambda$ fails to be a upper bound for $B(r)$.
+\end{enumerate} 
+Let us now prove the first claim. Let us denote the element $x \in B(r)$ by $b^{s}$. By definition, $s$ is rational and $ s \leq r$ so $0 \leq r-s$ which implies that $1 \leq b^{r-s}$. (Note $b>1$ by assumption). Multiplying by $b^{s}$ gives us $b^{s} \leq b^{r}$, so $b^{r}$ is an upper bound for $B(r)$. \\ 
+To prove the second claim, note that $r \leq r$ and so $b^{r} \in B(r)$. So if $\lambda
+< b^{r}$, then $\lambda$ fails to be an upper bound for $B(r)$. Thus, $ b^{r} =$ sup $B(r)$. \\ \\  
+Since the numbers above are arbitrary, it holds for any such $r$ so it makes sense to define  $ b^{x} =$ sup $B(x)$ provided that $x$ is rational and $b>1$. \\ \\
+\item Prove that $b^{x+y}=b^{x}b^{y}$ for all real $x$ and $y$. \\ \\
+If we can somehow show that $b^{x+y} \leq b^{x}b^{y}$ and also show that $ b^{x}b^{y} \leq b^{x+y}$ then this would show $b^{x+y} = b^{x}b^{y}$. We will first attempt to show that $b^{x+y} \leq b^{x}b^{y}$. First note that $b^{x+y} =$ sup $B'(x+y)$ where $B'(z)=$ sup $\braces{b^{r} | r < z, r \in \mathbb{Q}}$. For every $b^{r} \in B'(x+y)$, we have $r<x+y$ so by Lemma 5, there exists rational numbers $s<x$ and $t<y$ such that $r<s+t<x+y$. By part (b) and by the fact that $b>1$, we have
+\begin{align*}
+b^{r}<b^{s+t}=b^{s+t}< b^{x+y}.
+\end{align*}
+This suggests that $b^{x}b^{y}$ is an upper bound for $B'(x+y)$, and so  $b^{x+y} \leq b^{x}b^{y}$. \\ \\
+We now show $ b^{x}b^{y} \leq b^{x+y}$. If $r<x$ and $s<y$ then $r+s<x+y$. By part (b) and by using the fact that $b>1$ suggests $b^{x}b^{y}=$ sup $\braces{ b^{r}b^{s} | r<x, s<y, r, s \in \mathbb{Q}}$. This implies that $b^{x}b^{y} \leq b^{x+y}$. Thus $b^{x}b^{y} = b^{x+y}$.
+
+\end{enumerate} 
+\problem Rudin Question 7 Chapter 1. Fix $b>1$, $y>0$, and prove that there is a unique real $x$ such that $b^{x}=y$, bu completing the following outline. (This $x$ is called the logarithm of $y$ to the base $b$).
+\begin{enumerate}
+
+
+\item For any positive integer $n$, $b^{n}-1 \geq n(b-1)$. \\ \\
+We will prove this by induction. For our base case, $n=1$, it is clear that $b-1 \geq b-1$ is a true statement. Assume this holds for $n=k$. We want to show that this holds for $k+1$. That is,
+\begin{align*}
+b^{k+1}-1 \geq (k+1)(b-1) \\
+b^{k}b^{1}-1 \geq kb-b+b-1 \\
+b^{k}b^{1}-b \geq kb-b \\
+b(b^{k}-1) \geq k(b-1)
+\end{align*}
+which is true since $b^{k}-1 \geq k(b-1)$ by hypothesis and $b$ is a positive number greater than $1$. \\
+\item Hence $b-1 \geq n(b^{1/n}-1)$. \\ \\
+Note this follows immediately by setting $b$ in part (a) equal to $b^{1/n}$. This yields $b-1 \geq n(b^{1/n}-1)$ which is exactly what we needed to show. Note that the statement is still true because $b^{1/n}$ still satisfies the definition of $b$. \\ 
+
+
+\item If $t>1$ and $n>(b-1)/(t-1)$, then $b^{1/n}<t$. \\ \\
+Since $n>(b-1)/(t-1)$, then $(b-1)<n(t-1)$. By part (b) we may write $n(b^{1/n}-1) \leq (b-1)<n(t-1)$ and so $n(b^{1/n}-1) < n(t-1)$ which shows $(b^{1/n}-1) < t-1$ and thus we may conclude  $b^{1/n}<t$.
+
+\item If $w$ is such that $b^{w} < y$, then $b^{w+(1/n)} < y$ for sufficiently large $n$. \\ \\
+Let $t=\dfrac{y}{b^{w}}$. Then $t>1$. We already showed $b^{1/n}<t$ so multiplying on both sides by $b^{w}$ yields $b^{w}b^{1/n} < tb^{w}$ which shows $b^{w+(1/n)} < y$. \\ 
+
+\item If $b^{w} > y$ then $b^{w-(1/n)}>y$ for sufficiently large $n$. \\ \\
+Let $t=\dfrac{b^{w}}{y}$. Then $t>1$. By part (c) we have $b^{1/n}<t$. Dividing throughout by $b^{1/n}$ yields $1< \dfrac{t}{b^{1/n}}$. Substituting in for $t$ gives us $1< \dfrac{b^{w}}{yb^{1/n}}$ which gives us $y< b^{w-(1/n)}$. \\
+
+\item Let $A$ be the set of all $w$ such that $b^{w}<y$ and show that $x=$ sup $A$ satisfies $b^{x}=y$. \\ \\
+We will first show that sup $A$ exists. Note that since $b>1$, and $y>0$ we may choose a sufficiently small $w$ which will get us close to $0$. This tells us that $A$ is nonempty. Moreover, since $b^{w}<y$ for a sufficiently large $w$, $A$ is bounded above. Since we have a nonempty subset of $\mathbb{R}$ which is bounded above, then the supremum exists. Let sup $A = x$. \\ 
+We must now show that $b^{x}=y$. To do this we will show that $b^{x}<y$ and $b^{x}>y$ lead to contradictions. \\ \\
+Assume $b^{x}<y$. Then by part (d), $b^{x+(1/n)} < y$. This tells us that $x+(1/n) \in A$. However, $x$ is an upper bound of $A$ and since, $x+(1/n) > x$ we have reached our contradiction. \\
+Assume $b^{x}>y$. Then by part (e) $b^{x-(1/n)}>y$. However, $x-(1/n) < x$ and $x$ is assumed to be the sup $A$ so every element less than $x$ fails to be an upper bound and thus we have reached our contradiction. \\
+Therefore, it must be the case that $b^{x}=y$.
+
+\item Prove that this $x$ is unique. \\ \\
+Assume that $x$ is not unique. That is, there exists $x$ and $y$ such that $x=$ sup $A$ and $y=$ sup $A$, but $x \neq y$. Then, either $x>y$ or $x<y$. WLOG, assume that $x>y$. Then, be the definition of the supremum, every element less than $x$ fails to be an upper bound for $A$. However, $y$ is less than $x$ and $y$ is also a supremum and hence an upper bound as well. Contradiction!
+\end{enumerate}
+\end{document}

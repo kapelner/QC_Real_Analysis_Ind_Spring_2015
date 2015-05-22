@@ -1,0 +1,238 @@
+\documentclass[12pt]{article} 
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{color}
+\title{Math 650.2 Homework 2}
+\author{Elliot Gangaram\\
+\date{}
+\ elliot.gangaram@gmail.com \\}
+\include{preamble}
+
+
+\newtoggle{spacingmode}
+\begin{document}
+\maketitle
+
+\problem Define the first eight axioms of Zermelo-Fraenkel set theory.
+
+\begin{enumerate}
+\item The Axiom of Existence states there exists a set which has no elements. Such a set is commonly referred to as "the empty set" and is denoted by $\varnothing$ or $\braces{}$. We define this as the following. \begin{equation}
+\exists X \forall y, y \notin X
+\end{equation}
+
+\item The Axiom of Extensionality states that if every element of $A$ is an element of $B$ and every element of $B$ is an element of $A$ then $A=B$. This meshes with our understanding of equality of sets because to prove two sets are equal, we must show that each set is a subset of the other set, and thus they contain the same elements.  Mathematically, we write \begin{equation}
+\forall A \forall B (\forall x(x \in A \leftrightarrow x \in B) \rightarrow A=B)
+\end{equation} \\
+
+\item The Axiom Schema of Comprehension says let $P(x)$ be a property of $x$. For any set $A$, there exists a set $B$ such that $x \in B$ if and only if $x \in A$ and $P(x)$ holds. For example, let $A= \braces{1,2,3,4,5,6,7}$ and let $P(x)$ mean $x$ is odd. Then $B= \braces{1,3,5,7}.$ Formally we say let $ \phi$ be any formula (in the language of ZFC) and let $x, z, w_{1}, ..., w_{n}$ be free variables. Then:
+\begin{equation}
+\forall x \forall w_{1} \forall w_{2} ... \forall w_{n} \exists y \forall x [x \in y \leftrightarrow (x \in z \wedge \phi)]
+\end{equation} \\
+
+\item The Axiom of Pair states for any sets $A$ and $B$, there exists a set $C$ such that $x \in C$ if and only if $x=A$ or $x=B$. For example, let $A= \braces{1,2}$ and let $B=\braces{3,4}.$ Then $C= \braces{\braces{1,2},\braces{3,4}}.$  Formally, we say given any set $A$ and any set $B$, there exists a set $C$ such that given any set $D$, $D$ is a member of $C$ if and only if $D$ is equal to $A$ or $D$ is equal to $B$. We denote this by the following: \begin{equation}
+ \forall A \forall B \exists C \forall D [D \in C \leftrightarrow (D = A \vee D = B)]
+\end{equation} \\
+
+\item  Formally, we write \begin{equation}
+ \forall A \exists B \forall c (c \in B \leftrightarrow \exists D (c \in D \wedge D \in A)
+\end{equation} \\
+
+\item The Axiom of Power Set states for any set $S$ there exists a set $P$ such that $X \in P$ if and only if $X \subseteq S$. We denote this set by $\mathcal P \left({S}\right)$. As an example, if $S=\braces{a,b}$, then $\mathcal P \left({S}\right)=\braces{ \varnothing, \braces{a}, \braces{b}, \braces{a,b}}.$ Formally we say that given any set $A$, there is a set denoted by $P(A)$ such that given any set $B$, $B$ is a member of $P(A)$ if and only if every element of $B$ is also an element of $A$. Formally, we write \begin{equation}
+\forall A \exists P \forall B [B \in P \leftrightarrow \forall C (C \in B \rightarrow C \in A)].
+\end{equation} \\
+
+\item The Axiom of Infinity states that an inductive set exists. For clarity, a set $S$ is called inductive if \\
+\begin{enumerate}
+\item $0 \in S$ \\
+\item If $n \in S$, then $(n+1) \in S$.
+\end{enumerate} 
+Thus an inductive set is defined by a successor function. Also note that this is a countable infinite set. Lastly, note that we may alternatively write, 
+\begin{equation}{}
+\exists S [\varnothing \in S \wedge \forall n (n \in S \rightarrow n \cup \left\lbrace n \right\rbrace \in S)]
+\end{equation}
+
+
+\item The Axiom Schema of Replacement states let $P(x,y)$ be a property such that for every $x$ there is a unique $y$ for which $P(x,y)$ holds. For every $A$ there exists a set $B$ such that for every $x \in A$ there is a $y \in B$ for which $P(x,y)$ holds. As an example, let $F$ be the operation defined by $P$, so suppose $P$ tells us $2x=y$. Accordingly, $F(x)$ denotes the unique $y$ for which $P(x,y)$ holds. Let $A=\braces{1,2,3}.$ Then $B=\braces{2,4,6}.$ Usually, we call such a set $B$, the image of $A$ by $F$. Moreover, this axiom tells us that the image of a set under any definable function will also be a set. Formally we say let $\phi$ be any formula (in the language of ZFC) whose variables  $x, y, A, w_{1}, ... , w_{n}$ are free variables. Then
+\begin{align*}
+\forall A \forall w_{1} \forall w_{2} ... \forall w_{n} [\forall x (x \in A \rightarrow \exists ! y \phi (x, y, w_{1}, ... , w_{n}, A)] \rightarrow 
+\end{align*}
+\begin{align*}
+ \exists B \forall y [y \in B \leftrightarrow \exists x \in A \phi (x, y, w_{1}, ... , w_{n}, A)])
+\end{align*}
+\end{enumerate}
+
+\problem Russell's Paradox \\
+\begin{enumerate}
+\item Consider the set $R$. Let $R$ be the set whose elements, $x$, are sets which are not elements of themselves. So, $R$ is a set of all sets $x$ such that $x \notin x$. We will now ask the question, is $R \in R$? Well there are two cases.\\
+\begin{enumerate}
+\item If $R \in R$, then $R$ is not an element of itself based on the definition of how we defined $R$, and thus $R \notin R$. \\\\
+\item Now suppose $R \notin R$. Then based on how we defined $R$, $R$ is not an element of itself and thus $R$ belongs to $R$. This leads to case 1 but case 1 leads to case 2 which leads us back to case 1 and so on. Thus we have a paradox.
+\end{enumerate}
+This paradox, known as Russell's Paradox violates the Axiom Schema of Comprehension. No longer can we form the set $\braces{x|x \notin x}$ where the property, $P(x)$ is precisely $x \notin x$. By the Axiom Schema of Comprehension, we have$\braces{x \in A|x \notin x}$ which is just the empty set.
+\end{enumerate} 
+
+\problem Axiom of choice
+\begin{enumerate}
+\item What do we mean by "axiom of choice?" Formally we say let $C$ be a collection of nonempty sets. Then we can choose a member from each set in that collection. In other words, there exists a function $f$ defined on $C$ with the property that for each $S$ in the collection, $f(S)$ is a member of $S$. (Note that such a function $f$ is often referred to as a choice function). Informally, this axiom is saying if $C$ is a collection of nonempty sets, then there exists a set which has a single member in common with each member of $C$. This can be thought of as a constructive process where one chooses an element in each set of $C$. \\ \\
+
+\item What is Zorn's lemma?\\ \\Zorn's lemma implies the axiom of choice and the axiom of choice implies Zorn's lemma. Thus the statements are equivalent to each other. Formally, Zorn's lemma states that every nonempty partially ordered set in which each chain has an upper bound contains a maximal element. [Note that a partially ordered set refers to a set with a  relation such that the relation is reflective, antisymmetric and transitive. Antisymmetric means that if $a,b$, and $c$ are elements of a set with a partial ordering, we may be able to tell that $aRb$ where $R$ means "is related to" but we may not be able to make sense of $aRc$. Formally, antisymmetric means that if $aRb$ and $bRa$, then $a=b$. An example of such is the order relation $\leq$ on the set of real numbers. This order relation is antisymmetric because if $x \leq y$ and $y \leq x$ then $x=y$. Additionally, we define a chain to be a subset of a partially ordered set such that the subset is totally ordered. So going back to our previous example with the elements $a,b,$ and $c$, we know that $a$ and $b$ can be ordered, but $c$ cannot be ordered. Thus the set, $\braces{a,b}$ is a chain. Moreover, if the relation is $\leq$ and we already stated that $aRb$, then the maximal element would be $b$.]
+\end{enumerate} ~\\
+\problem Truth Tables
+\begin{enumerate}
+\item Write the truth table for $p,q, \vee$.
+\begin{displaymath}
+\begin{array}{|c|c|c}
+   P
+ & Q
+ & P\lor{}Q \\
+\hline
+T & T & T \\
+T & F & T \\
+F & F & F \\
+F & T & T \\
+\hline
+\end{array}
+\end{displaymath}
+\item Write the truth table for $p,q, \wedge$.
+\begin{displaymath}
+\begin{array}{|c|c|c}
+   P
+ & Q
+ & P\land{}Q \\
+\hline
+T & T & T \\
+T & F & F \\
+F & F & F \\
+F & T & F \\
+\hline
+\end{array}
+\end{displaymath}
+\item Write the truth table for $p,q, \Rightarrow{}$.
+\begin{displaymath}
+\begin{array}{|c|c|c}
+   P
+ & Q
+ & P\Rightarrow{}Q \\
+\hline
+T & T & T \\
+T & F & F \\
+F & T & T \\
+F & F & T \\
+\hline
+\end{array}
+\end{displaymath}
+\item Write  the truth table for $p,q, \Leftrightarrow{}$
+\begin{displaymath}
+\begin{array}{|c|c|c}
+   P
+ & Q
+ & P\Leftrightarrow{}Q \\
+\hline
+T & T & T \\
+T & F & F \\
+F & T & F \\
+F & F & T \\
+\hline
+\end{array}
+\end{displaymath}
+\end{enumerate} ~\\
+\problem Equivalent Expressions Part One
+
+Show $\exists$ some function of $p$ and $q$ such that $\wedge$ can be replace by $\vee$. I claim that the expression  $\lnot(P \wedge Q)$ is the same as $\neg P \vee \lnot Q$. To prove this, we construct the following truth table.
+
+\begin{displaymath}
+\begin{array}{|c|c|c|c|c|c|c}
+   P
+ & Q
+ & P\land{}Q
+ & \lnot{}(P\land{}Q)
+ & \lnot{}P
+ & \lnot{}Q
+ & \lnot{}P\lor{}\lnot{}Q \\
+\hline
+T & T & T & F & F & F & F \\
+F & T & F & T & T & F & T \\
+T & F & F & T & F & T & T \\
+F & F & F & T & T & T & T \\
+\hline
+\end{array}
+\end{displaymath}
+
+\problem Equivalent Expressions Part Two
+
+Show $\leftrightarrow$ can be expressed by $\vee$. \\ \\ I claim that $P \leftrightarrow Q$ is the same as $\lnot{}(\lnot{}(\lnot{}P\lor{}Q)\lor{}(\lnot{}(\lnot{}Q\lor{}P)))$.
+\begin{displaymath}
+\begin{array}{|c|c|c|c|c|c|c|c}
+   P
+ & Q
+ & P\Leftrightarrow{}Q
+ & \lnot{}Q\lor{}P
+ & \lnot{}(\lnot{}Q\lor{}P)
+ & \lnot{}P\lor{}Q
+ & \lnot{}(\lnot{}P\lor{}Q)
+ & \lnot{}(\lnot{}(\lnot{}P\lor{}Q)\lor{}(\lnot{}(\lnot{}Q\lor{}P))) \\
+\hline
+T & T & T & T & F & T & F & T \\
+T & F & F & T & F & F & T & F \\
+F & T & F & F & T & T & F & F \\
+F & F & T & T & F & T & F & T \\
+\hline
+\end{array}
+\end{displaymath}
+
+
+\problem Define "union," "intersection," "$\setminus$," and "complement."
+\begin{enumerate}
+\item Define "union." Given two sets, $A$ and $B$, we can form a set that contains all the elements of $A$ and all the elements of $B$. This is called the union of $A$ and $B$ and this is denoted by $A \cup B$. By the union of $A$ and $B$, we shall mean the following set: $A \cup B = \left\{ {x|~x \in A \: or \: x \in B}\right\}$
+\item Define "intersection." Given two sets, $A$ and $B$, we can form a set that contains all the elements which belongs to both $A$ and $B$. This is called the intersection of $A$ and $B$ and this is denoted by $A \cap B$. By the intersection of $A$ and $B$, we shall mean the following set: $A \cap B = \left\{ {x|~x \in A \:and\: x \in B}\right\}$
+\item Define$\setminus$. Given two sets, $A$ and $B$, we can form a set which has all the elements that belong to $A$, but do not belong to $B$. This is denoted by $A \setminus B$ and we define this as follows: $A \setminus B = \left\lbrace x |~x \: \in \: A \: and \: x \notin B \right\rbrace $
+\item Define complement. To understand what the complement is, we first must introduce the universal set, commonly denoted by $\Omega$. Thus, the complement of a set $A$, denoted by $A^{c}$ is defined to be the following set: $A^{c} = \Omega \setminus A= \left\lbrace x \in \Omega|~x \notin A \right\rbrace$
+\end{enumerate}  
+
+\problem Von Neumann ~
+\begin{enumerate}
+\item What is Von Neumann's definition of ${\mathbb{N}}$? Von Neumann had constructed integers in the following recursive manner. \\ \\ 
+First, let 
+$0: = \left\lbrace \right\rbrace $ \\
+Then let us define a successor function, $S$ such that $S(a) = a \cup \left\lbrace a \right\rbrace$.
+To get a feel for this, let us list out the first few terms. \\ \\
+$0: = \left\lbrace \right\rbrace \\
+1: = 0 \cup \left\lbrace 0 \right\rbrace = \left\lbrace0 \right\rbrace = \left\lbrace \left\lbrace \right\rbrace \right\rbrace$ \hfill Note that this is $S(0)$ \\
+$2: = 1 \cup \left\lbrace 1 \right\rbrace = \left\lbrace 0,1 \right\rbrace = \left\lbrace \left\lbrace \right\rbrace, \left\lbrace \left\lbrace \right\rbrace \right\rbrace \right\rbrace $ \hfill Note that this is $S(1)$ \\ \\
+In general, the integer $N$ is defined to be the set with $N$ elements where these elements are the von Neumann integers ranging from $0$ to $N-1$. \\
+\item How does Von Neumann's define addition in ${\mathbb{N}}$? 
+
+Addition is defined in the following manner: There is a unique function $+: \mathbb{N} \times \mathbb{N}$ such that
+\begin{enumerate}
+\item $+(m,0)=m$ for all $m \in {\mathbb{N}}$
+\item $+(m,n+1)=S(+(m,n))$ for all $m,n \in {\mathbb{N}}$.
+\end{enumerate}
+Note that the function is denoted by + and that the ordered pair $(a,b)$ is an argument of the function.
+\end{enumerate}
+\problem GLB
+Let $A= \braces{\dfrac{1}{1},\dfrac{1}{2},\dfrac{1}{3},...}$. Show that inf $A = 0$. \\ \\
+To show that the inf $A = 0$, we first must show the following two conditions hold:\\ 
+\begin{enumerate}
+\item We must show that $0$ is a lower bound for $A$, namely $0 \leq x , \forall x \in A$ ~\\
+\item We must show that any element greater than $0$ fails to be a lower bound for $A$, namely if $0 < \lambda$ then $\lambda$ fails to be a lower bound for $A$.
+\end{enumerate} 
+(1) Since $\forall x \in A, x=\dfrac{1}{n}$ for some positive $n$, it is clear that $0 \leq \dfrac{1}{n}$ and so $0$ is a lower bound for $A$.\\ \\ (2) Now we must show that the second condition holds. We will do so by contradiction. Assume $\exists ~ \lambda$ where  $0 < \lambda$ such that $\lambda$ is a lower bound for $A$. Then this contradicts the Archimedean Property of the real number system. That is, since $\lambda$ and $1$ belong to ${\mathbb{R}}$ and $\lambda > 0$, then there exists some positive integer $n$ such that $\lambda n >1$, so this implies $0 < \dfrac{1}{n} < \lambda$. But $\dfrac{1}{n} \in A$ and thus $\lambda$ cannot be a lower bound for $A$ and hence cannot be the inf $A$.
+
+\problem
+
+Let $F$ be a field and let $x \in F$. Show that $-(-x)=x$.\\ From Proposition 1.14c in Rudin, we know that if $a+b=0$, then $b=-a$. So we may say that \begin{align*}
+a+(-a)=0
+\end{align*} Now, let us first choose $a=x$. Then by the above equation and by the fact that we are in a field, we have 
+\begin{align*}
+x+(-x)=(-x)+x=0
+\end{align*}
+Let us now choose $a=-x$ so 
+\begin{align*}
+(-x)+(-(-x))=0
+\end{align*}
+So we have \begin{align*}
+(-x)+x=(-x)+(-(-x))
+\end{align*}
+By Proposition 1.14a in Rudin, we can therefore conclude that $x= -(-x)$.
+\end{document}

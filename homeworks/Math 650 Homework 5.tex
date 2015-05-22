@@ -1,0 +1,220 @@
+\documentclass[12pt]{article} 
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{color}
+\usepackage{polynom}
+\input{longdiv}
+\usepackage{xlop}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{corollary}{Corollary}[theorem]
+\newtheorem{lemma}[theorem]{Lemma}
+\title{Math 650.2 Homework 5}
+\author{Elliot Gangaram\\
+\date{}
+\ elliot.gangaram@gmail.com \\}
+\include{preamble}
+
+
+\newtoggle{spacingmode}
+\begin{document}
+\maketitle
+
+\problem 
+\begin{enumerate}
+\item Prove that $\mathbb{R}$/$\mathbb{Q}$ is dense in $\mathbb{Q}$. \\ \\
+Let $x$ and $y$ be rational numbers. WLOG, assume $x<y$. We would like to show that there exists a $r \in \mathbb{R}$/$\mathbb{Q}$ such that $x<r<y$. First, observe 
+\begin{align*}
+x<y \\
+x - \sqrt{2} < y -\sqrt{2}
+\end{align*}
+By Theorem 1.20, we know there exists a rational number $q$ such that $x - \sqrt{2} < q< y -\sqrt{2}$. So we have
+\begin{align*}
+x - \sqrt{2} < q< y -\sqrt{2} \\
+x < q + \sqrt{2} < y 
+\end{align*}
+To complete the proof, we must show that $q + \sqrt{2} $ is an irrational number. To do so, assume $q + \sqrt{2}$ is rational. That is there exists integers $m$ and $n$ where $n \neq 0$ such that $q + \sqrt{2} = m/n$. Then we have 
+\begin{align*}
+q + \sqrt{2} = m/n \\
+\sqrt{2} = (m/n) - q
+\end{align*}
+However, by the closure of $\mathbb{Q}$, the right hand side of the above equation is rational. The left hand side, which we proved in homework 1, is irrational. Thus we get a contradiction and hence we have $x < q + \sqrt{2} < y$ where $ q + \sqrt{2}$ is an irrational number. 
+\item Prove that $\mathbb{Q}$ is dense in $\mathbb{R}/\mathbb{Q}$. \\ \\ 
+Let $x$ and $y$ be irrational numbers. WLOG, assume $x<y$. We would like to show that there exists a rational number $q$ such that $x<q<y$. Since $x<y$ this implies that $y-x>0$. Since $1$ is a real number, then we may invoke the Archimedean property. That is, there exists a positive integer $n$ such that $n(y-x)>1$. So we have
+\begin{align*}
+n(y-x)>1 \\
+ny-nx>1
+\end{align*} \begin{equation}
+ny>nx+1
+\end{equation}
+Let us set Equation 1 aside and come back to it later. Let $m$ be the smallest integer such that $m>nx$. (Note we will prove the existence of such an $m$ in question 3). This implies that \begin{equation}
+\dfrac{m}{n} > x
+\end{equation} \\
+Since $m$ is the smallest integer such that $m>nx$, then $m-1 \leq nx$. To see this, note if $m-1 > nx$, then we would have $m> m-1 > nx$ which contradicts our choice of $m$. So $m-1 \leq nx$ implies $m \leq nx+1$. So Equation 1 and $m \leq nx+1$ implies
+\begin{equation}
+m \leq nx+1 < ny 
+\end{equation}
+\begin{equation}
+m < ny 
+\end{equation}
+\begin{equation}
+\dfrac{m}{n} < y
+\end{equation}
+Putting Eq.2 and Eq.5 together tells us
+\begin{equation}
+x < \dfrac{m}{n} < y 
+\end{equation}
+To complete the proof, we must show $\dfrac{m}{n}$ is a rational number. Since $m$ and $n$ are defined to be integers and $n$ cannot be zero since $n$ is positive, then $\dfrac{m}{n} \in \mathbb{Q}$.
+
+\end{enumerate}
+
+
+
+\problem 
+\begin{enumerate}
+\item Prove that $q \in \mathbb{Q} \Leftrightarrow $ the decimal expansion of $q$ is finite or the decimal expansion of $q$ is infinite and repeating. \\ \\
+Before we begin the proof, a few words are in order. First, how can we write the decimal expansion of $q$? Well, by our definition of $q$, we know that $q=\dfrac{m}{n}$ where $m$ and $n$ are integers, and $n$ is nonzero. Later in the proof, we will describe an algorithm to write the decimal expansion of $\dfrac{m}{n}$.  For now it is enough to assume that the decimal expansion simply exists. Secondly, what do we mean that a decimal expansion is finite? Is infinite? Is infinite and repeating? Informally, we say that a decimal expansion is finite if after some length of digits, there is a zero to the right of the decimal point in the decimal expansion. For example, $\dfrac{3}{2}=1.5$ is finite since we can equivalently write $\dfrac{3}{2}=1.5=1.50=1.500=\ldots$. We say that a decimal expansion is infinite if there is no zero to the right of the decimal point. Lastly, we say that a decimal expansion is infinite and repeating if after some digit of the decimal expansion, the decimal expansion starts to constantly repeat a former sequence of digits. For example, $\dfrac{13}{7}=1.857142857142857142\ldots$. We see that there is a repetition of the sequence $857142$. With these informal definitions, we now begin the proof. \\ \\
+$\Leftarrow$ Assume that $q$ is finite or the decimal expansion of $q$ is infinite and repeating. We want to show that $q \in \mathbb{Q}$. \\ \\ First, assume that the decimal expansion of $q$ is finite. Then we have $q= a \textbf{.} d_{1} d_{2} d_{3} \ldots d_{k}$ where $a$ represents the integer part, $d_{i}$ denotes the $i^{th}$ digit to the right of the decimal and $k$ denotes some positive integer. To show this is a rational number, we must show $a \textbf{.} d_{1} d_{2} d_{3} \ldots d_{k}$ can be represented as the division of two integers, $m/n$. Note that the bold dot, \qu{\textbf{.}}, represents the decimal point. Let $m= (a \textbf{.} d_{1} d_{2} d_{3} \ldots d_{k})(10^{k})$ and let $n= 10^{k}$. Then we have
+\begin{align*}
+\dfrac{m}{n} = \dfrac{(a \textbf{.} d_{1} d_{2} d_{3} \ldots d_{k})(10^{k})}{10^{k}} \\
+\dfrac{m}{n} = a \textbf{.} d_{1} d_{2} d_{3} \ldots d_{k}
+\end{align*}
+and so we have shown that a finite decimal expansion is a rational number. We must now show that an infinite repeating decimal expansion is also rational. \\ \\
+Let \begin{equation}
+x=a \textbf{.} d_{1} d_{2} d_{3} \ldots d_{m} \overline{d_{m+1} \ldots d_{m+p}} = a + 0 \textbf{.} d_{1} d_{2} d_{3} \ldots d_{m} \overline{d_{m+1} \ldots d_{m+p}}
+\end{equation}where again $a$ is the integer part of the number, $d_{i}$ represents the $i^{th}$ digit after the decimal place and the bar represents the repeating part of the decimal expansion. Multiplying both sides by $10^{m}$ yields
+\begin{equation}
+10^{m}x = 10^{m}a + d_{1}d_{2}d_{3} \ldots  d_{m} \textbf{.} \overline{d_{m+1} \ldots d_{m+p}} 
+\end{equation}
+Multiplying both sides of Eq (7) by $10^{m+p}$ yields 
+\begin{equation}
+10^{m+p}x= 10^{m+p}a + d_{1} d_{2} \ldots d_{m} d_{m+1} \ldots d_{m+p} \textbf{.} \overline{d_{m+1} \ldots d_{m+p}}
+\end{equation}
+Subtracting Equation (8) from Equation (9) yields
+\begin{equation}
+10^{m+p}x-10^{m}x = (10^{m+p}a +d_{1} d_{2} \ldots d_{m} d_{m+1} \ldots d_{m+p}) - (10^{m}a + d_{1} d_{2} \ldots d_{m})
+\end{equation}
+The right hand side of the above equation is some integer, as seen from the absence of a decimal point. Let us call this integer $N$. Note that we can factor out an $x$ on the left hand side to get $(10^{m+p} - 10{m})x$. So we have
+\begin{equation}
+(10^{m+p} - 10{m})x = N
+\end{equation}
+Dividing both sides by $(10^{m+p} - 10{m})$ yields
+\begin{equation}
+x = N/(10^{m+p} - 10{m})
+\end{equation}
+and thus we have expressed $x$ as the ratio of two integers. \\ \\
+
+$\Rightarrow $ Assume $q \in \mathbb{Q}$. Then $q= m/n$ where $m$ and $n$ are integers and $n \neq 0$. When long dividing $n$ into $m$, we have two possibilities. Either the decimal expansion terminates after some digit, or the decimal expansion never stops. If the decimal expansion terminates then we are done and it is clear that $m/n$ is a rational number. Now suppose the decimal expansion does not terminate. We must show that the infinite decimal expansion has a repetition in it. \\ \\ 
+
+Given $m/n$, how shall we write the decimal expansion? Let $m/n = q \textbf{.} d_{1} d_{2} \ldots $ where $q$ is the integer part and $d_{i}$ is the $i^{th}$ digit after the decimal. According to the division algorithm, we have $m=nq+r$ where  $0 \leq r < n$. I claim that the repetition occurs within the first $n$ digits after the decimal point. To prove this we will look at how to do the classic long division in a new light. Namely, we will express the result from long division by  iterating the division algorithm in steps. \\ 
+\begin{itemize}
+\item [(1)] $m_{1} = n(q_{1}) + r_{1}$ This gives us the integer part, $q_{1}$. \\
+\item [(2)] $10r_{1} = n(q_{2}) + r_{2}$ This gives us the first digit to the right of the decimal, $q_{2}$. \\
+\item [(3)] $10r_{2} = n(q_{3}) + r_{3}$ This gives us the next digit, $q_{3}$. \\
+\hspace{5mm} $\ldots\ldots\ldots$  \\
+\hspace{5mm} $\ldots\ldots\ldots$  \\
+\hspace{5mm} $\ldots\ldots\ldots$  
+\item [($n-1$)] $10r_{n-2} = n(q_{n-1}) + r_{n-1}$. This gives us the next digit, $q_{n-1}$. \\
+\item [($n$)] $10r_{n-1} = n(q_{i}) + r_{i}$ for some $1 \leq i \leq n$. \\
+\hspace{5mm} $\ldots\ldots\ldots$ \\
+\hspace{5mm} $\ldots\ldots\ldots$
+\end{itemize}
+
+
+Note that it follows if $r_{j}=r_{k}$ for some $j<k$, then $q_{j+1}=q_{k+1}$ and $r_{j+1}=r_{k+1}$ because the quotients, $q$ and remainders, $r$, are the same when $10r_{j}=10r_{k}$ by the division algorithm. It will therefore follow that $q_{j+2}=q_{k+2}$ and $r_{j+2}=r_{k+2}$. So when the remainder repeats for the first time, the decimal expansion will repeat. However, how do we know that the remainders repeat? This is because of the division algorithm. Notice the division algorithm states $0 \leq r < n$. However, since we assumed the decimal expansion does not terminate, $n \neq 0$. This is because if $n=0$, then the decimal expansion (as defined before beginning the proof) would terminate because the next digit would be 0. Since we are assuming that the decimal expansion is infinite, we have $1 \leq r < n$. Thus, on the $n^{th}$ division a remainder must repeat as a consequence of the Pigeonhole Principle and this will begin a repetition. \\ \\
+
+\item Prove if $r \in \mathbb{R} / \mathbb{Q}$ then the decimal expansion of $r$ is infinite and not repeating. \\ \\ 
+We want to show that "if $r \in \mathbb{R} / \mathbb{Q}$ then the decimal expansion of $r$ is infinite and not repeating." Let $p$ represent "$r \in \mathbb{R} / \mathbb{Q}$" and let $q$ represent "the decimal expansion of $r$ is infinite and not repeating." We will use the fact that $p \rightarrow q$ is the same as showing the contrapositive, $\lnot{}q \rightarrow \lnot{}p$. Note that the negation of "the decimal expansion of $r$ is infinite and not repeating" could mean two things. Either "the decimal expansion of $r$ is finite" or "the decimal expansion of $r$ is infinite and repeating," since there are no other possibilities.  However, we proved "if the decimal expansion of $r$ is finite then $r$ is rational" and we also proved "if the decimal expansion of $r$ is infinite and repeating then $r$ is rational" in part(a) which completes the proof. 
+\end{enumerate}
+\problem
+
+\noindent Let $A \subset \mathbb{N}$ and assume $A$ is nonempty. Show that min $\braces{A}$ exists. \\ \\
+First recall that $\mathbb{N}$ is an ordered set. That is, given $x \in \mathbb{N}$ and $y \in \mathbb{N}$, either $x<y$, $x=y$, or $x>y$. By Von Neumann's construction of $\mathbb{N}$, we can order the elements of $\mathbb{N}$ from the least to greatest in the following way: $\mathbb{N}=\braces{1,2,3,4,5,\ldots}$. Note that the number $2$ is the symbol which denotes the successor of $1$ and $3$ is the symbol which denotes the successor of $2$ and so on. We are given that  $A \subset \mathbb{N}$ and $A$ is nonempty. To prove that min $\braces{A}$ exists, let us assume that min $\braces{A}$ does not exists and attempt to reach a contradiction. \\ \\
+Since $1$ is the starting point of the construction, it is the least element of $\mathbb{N}$ itself and so if $1 \in A$ then $1$ is the least element. Thus $1 \notin A$. Can $2 \in A$? Well since 2 is the successor of the 1, and 1 is not in $A$, then if 2 $\in A$, that would make 2 the least element. Thus $2 \notin A$. Can 3 $\in A$? Well since 1 and 2 are not in $A$, if $3 \in A$, then $3$ would be the least element. Thus, $3 \notin A$. Continuing this process, assume that $k \notin A$, where $k$ is some natural number. Does $k+1 \in A$? Well if $k+1 \in A$ then $k+1$ would be the least element and we assumed the least element does not exist. So $k+1 \notin A$. Since this holds for all natural numbers, then $A$ is empty which contradicts the assumption that $A$ is nonempty.   \\ \\
+Thus, it must be the case that min $\braces{A}$ exists. \\ \\
+
+\problem 
+Let $b$ be a real number such that $b>1$ and let $n \in \mathbb{N}$. Show that this implies $b^{1/n}>1$. \\ \\
+Proof: Assume that $b>1$ and assume $b^{1/n}<1$. Let us try and reach a contradiction. By last homework's exercise 6 of Chapter 1 in Rudin, take $1=r=x/y$ where $x=1/n$ and $y=1/n$. Then $b^{1/n}=b^{x}$. So we have the following 
+\begin{align*}
+b^{1/n}<1 \\
+b^{x}<1 \\
+(b^{x})^{y} < 1^{y} \\ 
+(b^{1/n})^{1/(1/n)} < 1 \\
+b<1 \\
+\end{align*}
+This contradicts the initial assumption that $b>1$ thus proving the claim. Note that $1^{y}=1$ for the following reason. Let $1^{y}=x$. We want to show that $x=1$. Well, $1^{y}=x$ implies $1^{1/n}=x$. By definition, see Rudin's note after stating Theorem 1.21, $x^{1/(1/n)}=1$ so $x^{n}=1$. Since this holds for all $n$, then $x=1$ as seen by expanding $x^{n}$ and using axiom $M4$. \\ \\
+
+\problem 
+Let $a$ and $b$ be positive real numbers. Show if $a \leq b$ then $a^{r} \leq b^{r}, \; \forall r \in \mathbb{R}^{+} \cup \braces{0}$. \\ \\
+Let $r=u+x$ where $u$ is a non negative rational number and $x$ is a non negative real number. Let us assume $a^{r} > b^{r}$ and attempt to reach a contradiction.
+\begin{align*}
+a^{r} > b^{r} \\
+a^{u+x} > b^{u+x} \\
+a^{u}a^{x} > b^{u}b^{x}
+\end{align*}
+where the last line follows from exercise 6 in Chapter 1 of Rudin. Since $a \leq b$, then $1 \leq \dfrac{b}{a}$. Also, there exists a $\lambda$ such that $\lambda a = b$, where $\lambda = \dfrac{b}{a}$. So we have
+\begin{align*}
+a^{u}a^{x} > b^{u}b^{x} \\ 
+a^{u}a^{x} > b^{u}(\lambda a)^{x} \\
+a^{u}a^{x} > b^{u} \lambda^{x} a^{x} \\
+a^{u} > b^{u} \lambda^{x} \\ 
+1 > a^{-u}  b^{u} \lambda^{x} \\
+1 >  b^{-u}b^{u} \lambda^{x} \\
+1 >\lambda^{x} \\
+1 > \Big(\dfrac{b}{a} \Big)^{x} \\
+1 > 1^{x} 
+\end{align*} 
+and so we reached our contradiction. 
+%To prove this, we will use the result from Rudin which states if $x$ and $y$ are real numbers, then $g^{x}g^{y}=g^{x+y}$. Let us assume that $a^{r} > b^{r}$ and attempt to reach a contradiction.
+%\begin{align*}
+%a^{r} > b^{r} \\
+%a^{r} a^{-r+1} > b^{r} a^{-r+1} \\
+%a^{1} > b^{r} a^{-r}  a^{1} 
+%\end{align*}
+%We now invoke our assumption. Since $a^{r} > b^{r}$, we may write $b^{r}  a^{-r} a^{1} > b^{r}b^{-r}b^{1}$. So, we have 
+%\begin{align*}
+%a^{1} > b^{r} a^{-r}  a^{1} > b^{r}b^{-r}b^{1} \\
+%a^{1} > b^{r}b^{-r}b^{1} \\
+%a^{1} > b^{1} \\
+%a > b
+%\end{align*}
+%which contradicts $a \leq b$. \\ \\
+
+%To prove this, we will first use the following lemma. \\ \\
+%\textbf{Lemma:} Let $a$ and $b$ be real numbers and let $r$ be a non negative real number. Then,
+%\begin{equation}
+%b^{r}-a^{r} = (b-a)(b^{r-1} + b^{r-2}a + \ldots + a^{r-1})
+%\end{equation} \\ \\
+
+%\textbf{Proof}: \\
+%\begin{equation*}
+%(b-a)(b^{r-1}+b^{r-2}a+ \ldots + a^{r-1})
+%\end{equation*}
+%\begin{align*}
+%= b^{r} + b^{r-1}a + b^{r-2}a^{2} + b^{r-3}a^{3} + \dots + ba^{r-1} - ab^{r-1} - a^{2}b^{r-2} - \ldots - a^{r-1}b-a^{r}
+%\end{align*}
+%\begin{equation*}
+%= b^{r} + (b^{r-1}a -ab^{r-1}) + \ldots + %(ba^{r-1} - a^{r-1}b) - a^{r} 
+%\end{equation*}
+%\begin{equation*}
+%=b^{r} - a^{r}
+%\end{equation*} \\ \\
+%We now continue with the original proof, namely let $a$ and $b$ be positive real numbers. Show if $a \leq b$ then $a^{r} \leq b^{r}, \; \forall r \in \mathbb{R}^{+} \cup \braces{0}$. \\ \\ 
+%In the case that $a=b$, it is trivial that $a^{r} \leq b^{r}$ since replacing $b$ with $a$ yields $a^{r} \leq a^{r}$ which is true. We must now show that if $a < b$ then $a^{r} < b^{r}$. \\ \\ 
+%Since $a < b$, then $b-a>0$. Let us multiply both sides by $(b^{r-1} + b^{r-2}a + \ldots + a^{r-1})$. So we have 
+%\begin{align*}
+%(b-a) > 0  
+%\end{align*}
+%\begin{equation}(b-a)(b^{r-1} + b^{r-2}a + \ldots + a^{r-1}) > 0 (b^{r-1} + b^{r-2}a + \ldots + a^{r-1})
+%\end{equation}
+%By our lemma, this simplifies to 
+%\begin{align*}
+%b^{r} - a^{r} > 0 \\
+%a^{r} < b^{r}
+%\end{align*}
+%which completes the proof.% 
+%other idea using sups and standard blah over 2 argument.
+
+\end{document}

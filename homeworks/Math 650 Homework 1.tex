@@ -1,0 +1,68 @@
+\documentclass[12pt]{article}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\title{Math 650.2 Homework 1}
+\author{Elliot Gangaram\\
+\date{}
+\ elliot.gangaram@gmail.com \\}
+\include{preamble}
+
+
+\newtoggle{spacingmode}
+\begin{document}
+\maketitle
+
+
+\problem If the number $q \in \rationals$ is prime, prove that $\sqrt{q} \notin \rationals$. \\ \\ 
+We will present three solutions to the above question. \\ \\
+\textbf{Proof One:} Let us assume that $\sqrt{q} \in \rationals$ and try to reach some sort of contradiction. Since $\sqrt{q} \in \rationals$, then there exists some integers $x$ and $y$  where  $x$ and $y$ are relatively prime and $y \not= 0$ such that $\dfrac{x}{y}=\sqrt{q}$. Squaring both sides gives us $\Big(\dfrac{x}{y}\Big)^{2} = q$ which implies $\dfrac{x^2}{y^2}=q$ so \begin{equation}
+ x^2 = qy^2
+\end{equation} This shows that $q$ divides into $x^2$ and since $q$ is prime, then we know $q$ divides into $x$. That is, there exists some integer $k$ such that \begin{equation}
+x=qk
+\end{equation} By Eq. 1 and Eq. 2 we have $qy^2=x^2=(qk)^2=q^2k^2=qqk^2$ so $qy^2=qqk^2$ and thus \begin{equation}
+y^2=qk^2
+\end{equation} This implies that $q$ divides into $y^2$ and since $q$ is prime, then we can say that $q$ divides into $y$. However, since $q$ divides into both $x$ and $y$, then $x$ and $y$ are not relatively prime. Contradiction! Thus $\sqrt{q}$ is irrational.  \\
+\\
+\textbf{Proof Two:} Assume $\sqrt{p} \in Q$. Then there exists positive integers, $m$ and $n$ where $m$ and $n$ are relatively prime and $n \not= 0$ such that $\dfrac{m}{n}= \sqrt{p}$. This implies that $\dfrac{m^2}{n^2}= {p}$ which is the same as saying $m^2 = n^2 p$. \\
+\\
+Claim: $m^2$ has as an even amount of $p$'s in it's prime factorization while $n^2 p$ has an odd amount of $p$'s in its prime factorization. \\ \\ By the Fundamental Theorem of Arithmetic we know the following: Let $q$ be an integer such that $q \textgreater 1$. Then there exists a unique positive integer $k$, a unique set of $k$ primes, $p_1 < p_2 < ... < p_k$ and a unique sequence of  positive integers, $i_1, i_2, ..., i_k$ such that $ p_{1}^{i_{1}} p_{2}^{i_{2}} ... p_{k}^{i_{k}}= q$.\\
+
+Using the Fundamental Theorem of Arithmetic, let us denote the prime $p$ in the factorization of $m$ by $p_j$. This implies that the exponent on $p_j$ is $i_j$. Then in the prime factorization of $m^2$ the exponent of $p_j$ will be $i_j + i_j$. Note that there exists only two possibilities. Either $i_j$ is even or $i_j$ is odd.  If $i_j$ is odd, then $i_j + i_j$ is even. If $i_j$ is even, then $i_j + i_j$ is also even. Thus the exponent of  $p_j$ in the prime factorization of $m^2$ is even. We must now show that $n^2 p$ has an odd amount of $p$'s in its prime factorization. By an argument similar to the one above, we know that $n^2$ must have an even amount of $p$'s in its prime factorization. So  $n^2 p$ will have an odd number of $p$'s in its prime factorization. \\ \\
+However, by the Fundamental Theorem of Arithmetic, we know that for each positive integer, there exists a unique prime factorization. The fact that the left hand side of $m^2 = n^2 p$ has an even amount of $p$'s while the right hand side has an odd amount of $p$'s tells us that these are two different integers. Contradiction! Thus $\sqrt{p} \not\in Q$.\\ \\
+\textbf{Proof Three:} The following proof relies on a corollary which stems from the Rational Zeros Theorem. \\ \\
+The corollary states the following: Consider the polynomial equation $x^n + c_{n-1} x^{n-1}+ ... + c_1 x + c_0 = 0$ where the coefficients $c_{0}, c_{1} , ..., c_{n-1}$ are integers and $c_{0} \not= 0.$ Any rational solution of this equation must be an integer that divides $c_{0}.$ \\ \\
+So assume $p$ is a prime number. We must show that $\sqrt{p}$  is not rational. \\ \\
+ Let us consider the polynomial equation $x^{2} - p = 0$. By the corollary we must find  all integers which divides $c_{0}.$ Since $c_{0}$ is prime, the only integers which divide into $c_{0}$ are $1,-1,p,$ and $-p$. It is clear that $x$ cannot be $-1$ or $1$ because then we would end up with the equation $1-p=0$ but since $p$ is a prime, $p$ cannot be 1 to make the equation true. It is also clear that the solution cannot be $p$ or $-p$ because substituting in $p$ or $-p$ for $x$ yields the following equation: $p^2 - p = 0$ which is true only in the case that $p=1$ or $p=0$ and this again violates our choice of $p$ since $p$ is suppose to be prime. This tells us that there is no rational solution to this equation. Note that since $\sqrt{p}$ is a solution, then $\sqrt{p}$ cannot be rational. \\
+
+\problem If the number $q \in \rationals$ is prime, prove that $\sqrt[n]{q} \notin \rationals$ where $n \in \naturals$ and $n > 1$. \\ \\
+Assume that the $n^{th} $ root of $q$ is rational. Then there exists integers $x$ and $y$ where $x $ and $y$ are relatively prime and $y \not = 0$ such that $\dfrac{x}{y} = q^{1/n}$. Raising both sides to the $n^{th}$ power yields the following $\dfrac{x^n}{y^n}=q$ which shows \begin{equation} x^n = qy^n
+\end{equation}
+This shows that $q$ divides into $x^n$ and since $q$ is prime, then we can say that $q$ divides into $x$. That is, there exists some integer $k$ such that \begin{equation}
+x=qk
+\end{equation} By Eq. 4 and Eq. 5, $qy^n=x^n=(qk)^n=q^nk^n=q^2q^{n-2}k^n$, so $qy^n=q^2q^{n-2}k^n$. Dividing through by $q$ leaves us with \begin{equation}
+y^n=qq^{n-2}k^n
+\end{equation} which shows that $q$ divides into $y^n$. But since $q$ is prime, then we can say that $q$ divides into $y$. However, since $q$ divides into $x$ and $q$ divides into $y$, we have shown that $x$ and $y$ are not relatively prime. Contradiction! We are forced to conclude that the  $n^{th} $ root of $q$ is irrational. \\
+
+\problem Let $A = \braces{q \in \rationals : q^2 < 2}$. Show that $\max{A}$ does not exist. \\ \\
+Assume $m \in A$ such that $m$ is the largest number in $A$. We must show that there exists some element $m'$ such that $m' > m$ and $m' \in A$. \\
+To find a candidate for an $m'$ first note that that $m^2 < 2$. Thus there exists some positive real number $\varepsilon$ such that $m^2 + \varepsilon = 2$. This implies that $m^2 + \dfrac{\varepsilon}{2} < 2$, so we should take $m' = \sqrt{m^2 + \dfrac{\varepsilon}{2}}$
+
+As noted earlier we must show that $m' > m$ and $m' \in A$.\\
+To show that $m' > m$, we proceed as follows.\\
+\begin{align*}
+m' > m \\
+\sqrt{m^2 + \dfrac{\varepsilon}{2}} > m \\
+m^2 + \dfrac{\varepsilon}{2} > m^2 \\
+\dfrac{\varepsilon}{2} > 0
+\end{align*}
+Note that the last line is true based off our choice of $\varepsilon$. Since each of the steps above are reversible, it follows that $m' > m$. We must now show that $m' \in A$ by proving that $(m')^2 < 2$. \\
+\begin{align*}
+(m')^2 < 2 \\
+\Bigg( \sqrt{m^2 + \dfrac{\varepsilon}{2}} \Bigg)^2 < 2 \\
+m^2 + \dfrac{\varepsilon}{2} < 2 \\
+\dfrac{\varepsilon}{2} < 2-m^2
+\end{align*}
+which is precisely how we choose our $\varepsilon$ as seen in the discussion of $\varepsilon$ on the previous page. Since each of the steps are reversible, it follows that $m' \in A$ and thus $\max{A}$ does not exist. 
+
+\end{document}

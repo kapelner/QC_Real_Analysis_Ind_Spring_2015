@@ -1,0 +1,128 @@
+\documentclass[12pt]{article} 
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{color}
+\usepackage{enumerate}
+\usepackage{gensymb}
+\usepackage[hyperfootnotes=false]{hyperref}
+\usepackage{graphicx}
+\graphicspath{ {images/} }
+
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{corollary}{Corollary}[theorem]
+\newtheorem{lemma}[theorem]{Lemma}
+\title{Math 650.2  Problem Set 13}
+\author{Elliot Gangaram\\
+\date{}
+\ elliot.gangaram@gmail.com \\}
+\include{preamble}
+
+
+\newtoggle{spacingmode}
+\begin{document}
+\maketitle
+
+\problem Is every point of every open set $E \subset \mathbb{R}^{2}$ a limit point of $E$? Answer the same question for closed sets in $\mathbb{R}^{2}.$ \\
+
+We first take care of the easy part, namely is every point of every closed set $E \subset \mathbb{R}^{2}$ a limit point of $E$? Here is a simple counter example. Consider the set $E= \braces{(0,0)}$. This set is closed because every limit point of $E$ belongs to $E$ since the set of limit points is just the empty set (Corollary to Theorem 2.20) and the empty set is a subset of every set. Therefore, $E$ is closed. However, $(0,0)$ is not a limit point for $E$ otherwise this would contradict the corollary to Theorem 2.20. \\ 
+
+We now ask ourselves is every point of every open set $E \subset \mathbb{R}^{2}$ a limit point of $E$? Let $E$ be an open set in $\mathbb{R}^{2}$ and let $p \in E$. Then $p$ is an interior point meaning that there exists at least one neighborhood $N_{r}(p) \subset E$. Additionally, we know that $N_{r}(p)$ contains infinitely many points of $E$ (Theorem 2.20). We want to show that $p$ is a limit point of $E$, that is every neighborhood of $p$ contains a point $q \neq p$ such that $q \in E$. We have two cases, either the radius of the neighborhood of $p$ is smaller than or greater than the radius of an arbitrary neighborhood. \\
+
+Case One: Let $r \leq s$. Then $N_{r}(p) \subseteq N_{s}(p)$. Since $N_{r}(p)$ contains some distinct point $q \in E$, (because $p$ is a limit point) then $q \in N_{s}(p)$ and so $p$ is a limit point of $E$ if $r \leq s$. \\
+
+Case Two: We now assume that $r>s$. Well $N_{s}(p)$ contains infinitely many points by Theorem 2.20. However, we know something specific about these points. We have $N_{s}(p) \subset N_{r}(p) \subset E$, and so $N_{s}(p)$ contains infinitely many points of $E$ and thus $p$ is a limit point of $E$ since we have shown that for all neighborhoods of $p$ we can find at least one point $q \neq p$ such that $q \in E$. \\ \\
+
+\problem Let $E^{\degree}$ denote the set of all interior points of a set $E$.
+\begin{enumerate}
+\item Prove that $E^{\degree}$ is always open. \\ 
+
+Let $p \in E^{\degree}$. We wish to show that $p$ is an interior point of $E^{\degree}$. Since $p \in E^{\degree}$, then $p$ is an interior point of $E$. That means there exists some neighborhood, $N_{r}(p)$ such that $N_{r}(p) \subset E$. By Theorem 2.19, we know that $N_{r}(p)$ is open. That means if $q \in N_{r}(p)$, then there exists some $N_{s}(q)$ such that $N_{s}(q) \subset N_{r}(p) \subset E$. This shows that $q$ is an interior point of $E$ and so $q \in E^{\degree}$. Since $q$ was arbitrary, we see that all points in $N_{r}(p)$ are interior points of $E$ so $N_{r}(p) \subset E^{\degree}$. Thus we have shown that every point, $p \in E^{\degree}$ is an interior point of $E^{\degree}$ since we have shown for every point in $E^{\degree}$, there exists a neighborhood $N_{r}(p) \subset E^{\degree}$ which proves $E^{\degree}$ is open. \\
+
+\item Prove that $E$ is open if and only if $E^{\degree}=E.$ \\ 
+
+If $E^{\degree}=E$, then $E$ is open by part $(a)$. So assume that $E$ is open. We wish to show that $E^{\degree}=E.$ Since $E$ is open, if $p \in E$, then there exists some $N_{r}(p) \subset E$ and so $p \in E^{\degree}$. This shows that $E \subseteq E^{\degree}$. Conversely, let $p \in E^{\degree}$. Then $p$ is an interior point of $E$ meaning there exists some neighborhood $N_{r}(p)$ such that $N_{r}(p) \subset E$. Since $p \in N_{r}(p)$, then $p \in E$ which shows that $E^{\degree} \subseteq E$. Thus we have shown both sets are subsets of each other which implies that $E^{\degree}=E.$ \\
+
+\item If $G \subset E$ and $G$ is open, prove that $G \subset E^{\degree}$.\\
+
+Let $p \in G$. Since $G$ is open, $p$ is an interior point of $G$ meaning that we can find some neighborhood $N_{r}(p)$ such that $N_{r}(p) \subset G \subset E$. This tells us that every point in $G$ is also an interior point of $E$ since $N_{r}(p) \subset E$. So $p \in E^{\degree}$ which shows $G \subset E^{\degree}$. \\  
+
+\item Prove that the complement of $E^{\degree}$ is the closure of the complement of $E$. \\ 
+
+We must show that $(E^{\degree})^{c}=\bar{E^{c}}$. As usual, we will show set equality. \\ 
+
+Let $p \in (E^{\degree})^{c}$. Then $p \notin E^{\degree}$ so that means $p$ is not an interior point of $E$. This means that for all neighborhoods, the intersection of $N_{r}(p)$ and $E^{c}$ cannot be empty since all neighborhoods of $p$ are not wholly contained in $E$. So we have two cases, either $p \in E^{c}$ or there exists some $x$ where $p \neq x$ such that $x \in N_{r}(p) \cap E^{c}$. \\
+
+Case One: If $p \in E^{c}$ then $p \in  E^{c} \cup (E^{c})' = \bar{E^{c}}$ and thus $(E^{\degree})^{c} \subset \bar{E^{c}}$. \\
+
+Case Two: Now assume that there exists some $x$ where $p \neq x$ such that $x \in N_{r}(p) \cap E^{c}$. Then $p \in (E^{c})'$ since we have shown $p$ is a limit point of $E^{c}$. So $p \in  E^{c} \cup (E^{c})' = \bar{E^{c}}$ and thus $(E^{\degree})^{c} \subset \bar{E^{c}}$. \\
+
+By reversing the proof above we can show that $\bar{E^{c}} \subset (E^{\degree})^{c}$. Let $p \in \bar{E^{c}}$. Then $p \in E^{c}$ or $p \in (E^{c})'$. \\ 
+
+Case One: If $p \in E^{c}$, then $p \notin E$ so $p$ is not an interior point of $E$ because all neighborhoods $N_{r}(p)$ are not wholly contained in $E$ since $p \notin E$. Thus $p \notin E^{\degree}$ and so $p \in (E^{\degree})^{c}$. \\
+
+Case Two: If $p \in (E^{c})'$, then $p$ is a limit point of $E^{c}$ so every neighborhood of $p$ contains some point $q \in E^{c}$. Therefore, $p$ cannot be an interior point of $E$ so $p \notin E^{\degree}$ which implies that $p \in (E^{\degree})^{c}.$  \\ 
+
+\item Do $E$ and $\bar{E}$ always have the same interiors? \\ 
+
+$E$ and $\bar{E}$ do not always have the same interiors. Let $E= \mathbb{Q}$ in $\mathbb{R}^{1}$. Then $\mathbb{Q}$ has no interior points because any neighborhood of a rational number contains irrational numbers since we proved set of irrationals numbers are dense in $\mathbb{R}$ by a previous homework exercise. Thus $\mathbb{Q}^{\degree} = \emptyset$. \\ 
+
+Now consider $\bar{E}=\bar{\mathbb{Q}}= \mathbb{Q} \cup \mathbb{Q}'$ where $\mathbb{Q}'$ denotes the set of all limit points of $\mathbb{Q}$. We see that $\mathbb{Q}'$ is the set of irrationals since any neighborhood around any irrational number contains a rational. Thus, $\bar{\mathbb{Q}}$ equals to the union of the rationals and irrationals which tells us that $\bar{E}= \mathbb{R}$. Finally, $(\bar{E})^{\degree} = (\mathbb{R})^{\degree} = \mathbb{R}$ because $\mathbb{R}$ is open in itself. So we see that $\mathbb{Q}^{\degree} = \emptyset  \neq (\bar{\mathbb{Q}})^{\degree} = \mathbb{R}$. \\ \\
+
+\item Do $E$ and $E^{\degree}$ always have the same closures? \\
+
+Recall that the closure of $A$ is the set $\bar{A}= A \cup A'$. Again letting $E = \mathbb{Q}$, we see that $(\bar{\mathbb{Q}})= \mathbb{R}$ by the argument above. Additionally, the closure of $E^{\degree}$ is the closure of $\mathbb{Q}^{\degree}$ which is $\bar{\mathbb{Q}^{\degree}}= \bar{\emptyset}= \emptyset$ and so they do not always have the same closure. \\
+\end{enumerate}
+
+
+\problem Let $X$ be an infinite set. For $p \in X$ and $q \in X$, defined 
+\begin{equation*}
+d(p,q) = \begin{cases}
+             1  & \text{if } p \neq q \\
+             0  & \text{if } p=q
+       \end{cases} \quad
+\end{equation*}
+Prove that this is metric. Which subsets of the resulting metric space are open? Which are closed? \\
+
+We first show that $d$ is metric defined on $X$.
+\begin{enumerate}
+\item It is clear that $d$ is a real valued function.
+\item We must show that $d(p,q)>0$ if $p \neq q$. However, this follows directly from our definition of $d$ since $d(p,q)=1$ if $p \neq q$.
+\item We must show that $d(p,p)=0$ but this follows directly from our definition of $d$.
+\item We must show that $d(p,q)=d(q,p)$. We have two cases. If $p \neq q$, then we have $d(p,q)=1=d(q,p)$. Alternatively, if $p=q$, then we have $d(p,q)=0=d(q,p)$.
+\item We must show that $d(p,q) \leq d(r,p)+d(r,q)$ for any $r \in X$. Note that we have two cases. Either $p=q$ or $p \neq q$. If $p=q$ then $d(p,q)=0$ but the right hand side is some nonnegative positive real number and thus $0 \leq d(r,p)+d(r,q)$ so the claim holds. Alternatively, assume that $p \neq q$. Note that in this case, if $p=r$ and $r=q$ then we would have violated the fact that $p \neq q$. So WLOG, assume that $p \neq r$. Then we have $d(p,q) = 1 \leq 1+d(r,q) = d(r,p)+d(r,q)$ and since $d(r,q)$ is nonnegative, the claim holds. This proves that $d$ is a metric. \\ 
+
+\end{enumerate}
+
+We now wish to consider which sets are open. Recall that an open set, $E$, is defined to be any set in the metric space such that every point of $E$ is an interior point of $E$. With the metric defined on $X$, it appears that any subset of $X$ is open. To see this let $E$ be an arbitrary subset of $X$. We have two cases. \\ 
+
+In the case that $E= \emptyset$, then $E^{\degree} = \emptyset$ and so $E^{\degree}=E$ which shows that every limit point of $E$ is a point in $E$ and so $E$ is open. \\
+
+Now let $E$ be any nonempty subset of $X$ and let $p \in E$. Observe what happens when we consider the neighborhood $N_{1/2}(p)$. $N_{1/2}(p)= \braces{x \in X ~|~d(x,p) < 1/2}.$ But by the definition of $d$, we have $N_{1/2}(p)= \braces{x \in X ~|~d(x,p) < 1/2} = \braces{p}.$ Observe that the limit points of $\braces{p}$ is the empty set by the corollary to Theorem 2.20 and so the set of limit points belongs to $N_{1/2}(p)$. Note that $N_{1/2}(p) = \braces{p} \subset E$. Therefore every point of $E$ is an interior point of $E$ since we have shown for every point in $E$, there exists some neighborhood $N_{1/2}(p)$ which is wholly contained in $E$. This is precisely the requirements to show that a set $E$ is open. \\ 
+
+We now consider which sets are closed. We know that every subset of $X$ is open. By Theorem 2.23, we know that a set is open if and only if its complement is closed. Since all sets are open, it follows that all sets are closed. This is because if we take $A$ to be any subset of $X$, we may set $A=E^{c}= X - E$. Thus, by conditioning on $E$, we can get any subset of $X$. Hence all subsets of $X$ are closed. \\ \\
+
+
+\problem Prove that the Cantor set is uncountable. \\ 
+
+Let us first recap how the Cantor set is constructed. Let $E_{0}$ be the interval $[0,1]$. Remove the segment $(1/3, 2/3)$ and let $E_{1}$ be the union of intervals $[0, 1/3]$ and $[2/3, 1]$. Remove the middle thirds of these intervals and let $E_{2}$ be the union of the intervals $[0 , 1/9 ], [2/3 , 3/9], [6/9 , 7/9],$ and $[8/9 , 1]$. Continuing this way we obtain a sequence of sets $E_{n}$ such that $E_{1} \supset E_{2} \supset E_{3} \supset \ldots .$ The set $P = \cap_{n=1}^{\infty} E_{n}$ is called the Cantor set. On the next page, we graphically show the first few iterations of the Cantor Set. We see that a point in the Cantor set is uniquely determined as an infinite sequence of $L's$ and $R's.$ Alternatively, we can let $L=0$ and $R=1$, so any point in the Cantor set may be described as a unique infinite sequence of 0's and 1's. Let us assume that the Cantor set is countable. Then we can list the elements as follows:
+\begin{center}
+$a_{1} = a_{11}a_{12}a_{13}\ldots \ldots \ldots$  \\
+$a_{2} = a_{21}a_{22}a_{23}\ldots \ldots \ldots$  \\
+$a_{3} = a_{31}a_{32}a_{33}\ldots \ldots \ldots$  \\
+\ldots \ldots \ldots \ldots \ldots \ldots  \ldots \\
+\ldots \ldots \ldots \ldots \ldots \ldots  \ldots
+\end{center} 
+where $a_{ij}=0$ or 1. Moreover, since the Cantor set, $P$ is countable, there exists a bijection $f: P \rightarrow \mathbb{N}$ where $a_{n}$ maps to the natural number $n$. If we can show that there exists some number in the Cantor set which is missed by the general correspondence, then it shows that $P$ is not countable because $f$ is not a function on $P$. Let us attempt to construct this number which is missed by $f$. Call this number 
+\begin{align*}
+b_{k} = \begin{cases}
+             0  & \text{if } a_{kk}=1  \\
+             1  & \text{if } a_{kk}=0
+       \end{cases} \quad
+\end{align*}
+Let us look along the diagonal of our list of elements. Notice that $b_{k}$ is no where in our list. To see this, assume that $b_{k}=a_{n}$ for some $n \in \mathbb{N}$. Then the $a_{nn}$ term in $a_{n}$ differs from the $b_{k}$ term and since a binary representation is unique, these two numbers are different. Thus $f$ is not a bijection, and so the Cantor set is uncountable. This reasoning is the same train of thought used to prove Theorem 2.14 which shows that the Cantor set is uncountable. Namely, let $A$ be the set of all sequences whose elements are the digits 0 and 1. This set $A$ is uncountable and the proof is exactly the proof given above. \\
+
+\centerline{\includegraphics[scale=0.70]{cantor}}
+
+\end{document}
